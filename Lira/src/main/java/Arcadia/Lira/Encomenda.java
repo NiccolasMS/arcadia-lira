@@ -1,3 +1,5 @@
+package Arcadia.Lira;
+
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -9,13 +11,13 @@ public class Encomenda implements Taxa{
     private String nomeCondominio;
     private String status;
     private String descricao;
-    private LocalDateTime dataChegada;
+    private LocalDateTime dataChegada = LocalDateTime.now();
     private Long diasEmEspera;
     private LocalDateTime dataEntrega;
-    private Double taxa;
-    private Boolean recebidoPorteiro;
-    private Boolean entreguePorteiro;
-    private Boolean assinaturaMorador;
+    private Double taxa = 0.0;
+    private Boolean recebidoPorteiro = false;
+    private Boolean entreguePorteiro = false;
+    private Boolean assinaturaMorador = false;
 
     public Encomenda(String codigo, String codigoDeRastreio, String nomeMorador, String nomeCondominio, String descricao) {
         this.codigo = codigo;
@@ -45,10 +47,6 @@ public class Encomenda implements Taxa{
                 ", nomeCondominio='" + nomeCondominio + '\'' +
                 ", status='" + status + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", dataChegada=" + dataChegada +
-                ", diasEmEspera=" + diasEmEspera +
-                ", dataEntrega=" + dataEntrega +
-                ", taxa=" + taxa +
                 ", recebidoPorteiro=" + recebidoPorteiro +
                 ", entreguePorteiro=" + entreguePorteiro +
                 ", assinaturaMorador=" + assinaturaMorador +
@@ -157,5 +155,9 @@ public class Encomenda implements Taxa{
 
     public void setAssinaturaMorador(Boolean assinaturaMorador) {
         this.assinaturaMorador = assinaturaMorador;
+        if(assinaturaMorador == true)
+        {
+            this.status = "Morador recebeu a entrega";
+        }
     }
 }

@@ -1,3 +1,5 @@
+package Arcadia.Lira;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,6 @@ public class Condominio {
     private String bairro;
     private String rua;
     private Integer numero;
-    private List<Encomenda> encomendas;
     private List<Usuario> usuarios;
 
     public Condominio(String nome, String cidade, String bairro, String rua, Integer numero) {
@@ -17,18 +18,27 @@ public class Condominio {
         this.rua = rua;
         this.numero = numero;
 
-        encomendas = new ArrayList<>();
         usuarios = new ArrayList<>();
     }
 
-    public Condominio(String nome, String cidade, String bairro, String rua, Integer numero, List<Encomenda> encomendas, List<Usuario> usuarios) {
-        this.nome = nome;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.rua = rua;
-        this.numero = numero;
-        this.encomendas = encomendas;
-        this.usuarios = usuarios;
+    public void cadastrarMorador(Morador morador)
+    {
+        usuarios.add(morador);
+    }
+
+    public void cadastrarPorteiro(Porteiro porteiro)
+    {
+        usuarios.add(porteiro);
+    }
+
+    @Override
+    public String toString() {
+        return "Condominio{" +
+                "nome='" + nome + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", rua='" + rua + '\'' +
+                ", numero=" + numero;
     }
 
     public String getNome() {
@@ -69,14 +79,6 @@ public class Condominio {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
-    }
-
-    public List<Encomenda> getEncomendas() {
-        return encomendas;
-    }
-
-    public void setEncomendas(List<Encomenda> encomendas) {
-        this.encomendas = encomendas;
     }
 
     public List<Usuario> getUsuarios() {
