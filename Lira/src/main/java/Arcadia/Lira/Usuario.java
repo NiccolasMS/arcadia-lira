@@ -10,6 +10,8 @@ public abstract class Usuario {
     private String senha;
     private String nome;
     private String telefone;
+
+    private Boolean autenticado;
     public List<Encomenda> encomendas;
 
 
@@ -25,6 +27,7 @@ public abstract class Usuario {
         this.senha = senha;
         this.nome = nome;
         this.telefone = telefone;
+        this.autenticado = false;
 
         this.encomendas = new ArrayList<>();
     }
@@ -42,6 +45,17 @@ public abstract class Usuario {
                 ", nome='" + nome + '\'' +
                 ", telefone='" + telefone + '\'' +
                 '}';
+    }
+
+    public boolean validarSenha(String senha){
+        return senha.equals(senha);
+    }
+    public Boolean getAutenticado() {
+        return autenticado;
+    }
+
+    public void setAutenticado(Boolean autenticado) {
+        this.autenticado = autenticado;
     }
 
     public Integer getIdUsuario() {
