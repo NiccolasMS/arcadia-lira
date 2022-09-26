@@ -1,5 +1,6 @@
 package Arcadia.Lira;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,67 +13,94 @@ public class UsuarioController {
     Condominio condominio = new Condominio("Sptech","SP","Santo antonio",
             "Itaquera",123);
 
-    @PostMapping("/cadastrarMorador")
-    public String postMorador(@RequestBody Morador newUsuario){
 
-        for (Usuario usuario : condominio.getUsuarios()){
-            if (usuario.getEmail().equals(newUsuario.getEmail())){
-                return "Usuário já cadastrado com esse email!";
+    @PostMapping("/cadastrarMorador")
+    public ResponseEntity postMorador(@RequestBody Morador newUsuario){
+        if(newUsuario.isValido())
+        {
+            for (Usuario usuario : condominio.getUsuarios()){
+                if (usuario.getEmail().equals(newUsuario.getEmail())){
+                    return ResponseEntity.status(400).body("Usuário já cadastrado com esse email!");
+                }
             }
+            condominio.cadastrarMorador(newUsuario);
+            //201 CREATED, geralmente utilizada com post
+            return ResponseEntity.status(201).body("Morador cadastrado com sucesso!\n"  + newUsuario);
         }
-        condominio.cadastrarMorador(newUsuario);
-        return "Morador cadastrado com sucesso!";
+        else {
+            //BAD REQUEST
+            return ResponseEntity.status(400).body("usuario e senha devem ter 3+ letras");
+        }
+
     }
 
     @PostMapping("/cadastrarPorteiro")
-    public String postPorteiro(@RequestBody Porteiro newUsuario){
+    public ResponseEntity postPorteiro(@RequestBody Porteiro newUsuario){
 
-        for (Usuario usuario : condominio.getUsuarios()){
-            if (usuario.getEmail().equals(newUsuario.getEmail())){
-                return "Usuário já cadastrado com esse email!";
+        if(newUsuario.isValido())
+        {
+            for (Usuario usuario : condominio.getUsuarios()){
+                if (usuario.getEmail().equals(newUsuario.getEmail())){
+                    return ResponseEntity.status(400).body("Usuário já cadastrado com esse email!");
+                }
             }
+            condominio.cadastrarPorteiro(newUsuario);
+            //201 CREATED, geralmente utilizada com post
+            return ResponseEntity.status(201).body("Porteiro cadastrado com sucesso!\n"  + newUsuario);
         }
-        condominio.cadastrarPorteiro(newUsuario);
-        return "Porteiro cadastrado com sucesso!";
+        else {
+            //BAD REQUEST
+            return ResponseEntity.status(400).body("usuario e senha devem ter 3+ letras");
+        }
     }
 
     @PostMapping("/autenticacao/{email}/{senha}")
-    public Usuario autenticarUsuario(@PathVariable String email,
-                                     @PathVariable String senha){
+    public ResponseEntity<Usuario> autenticarUsuario(@PathVariable String email,
+                                                     @PathVariable String senha){
         for (Usuario usuario1 : condominio.getUsuarios()){
             if (email.equals(usuario1.getEmail()) && usuario1.validarSenha(senha)){
                 usuario1.setAutenticado(true);
-                return usuario1;
+                return ResponseEntity.status(200).body(usuario1);
             }
         }
-        return null;
+        //401 não autorizado
+        return ResponseEntity.status(401).build();
     }
 
     @GetMapping("/usuarios")
-    public List<Usuario> getUsuarios(){
-        return condominio.getUsuarios();
+    public ResponseEntity<List<Usuario>> getUsuarios(){
+        //204 sem conteúdo
+        return condominio.getUsuarios().isEmpty()
+                ? ResponseEntity.status(204).build()
+                : ResponseEntity.status(200).body(condominio.getUsuarios());
     }
 
     @DeleteMapping("/autenticacao/{email}")
-    public String logoffUsuario(@PathVariable String email){
+    public ResponseEntity logoffUsuario(@PathVariable String email){
         for (Usuario usuario1 : condominio.getUsuarios()){
             if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(true)){
                 usuario1.setAutenticado(false);
-                return "Logoff do usuário " + usuario1.getNome() + " concluído";
+                return ResponseEntity.status(200).body("Logoff do usuário " + usuario1.getNome() + " concluído");
             }
             if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(false)){
-                return "Usuário " + usuario1.getNome() + " NÃO está autenticado";
+                //401 não autenticado, cliente deve autenticar para receber uma resposta
+                return ResponseEntity.status(401).body("Usuário " + usuario1.getNome() + " NÃO está autenticado");
             }
         }
-        return "Usuário " + email + " não encontrado";
+        //404 não encontrado
+        return ResponseEntity.status(404).body("Usuário " + email + " não encontrado");
     }
 
     @GetMapping("/autenticados")
-    public List<Usuario> autenticados(){
+    public ResponseEntity<List<Usuario>> autenticados(){
         List<Usuario> autenticados = condominio.getUsuarios().stream()
                 .filter(usuario -> usuario.getAutenticado().equals(true))
                 .collect(Collectors.toList());
-        return autenticados;
+
+        return autenticados.isEmpty()
+                ? ResponseEntity.status(204).build()
+                : ResponseEntity.status(200).body(condominio.getUsuarios());
+
     }
 
 }

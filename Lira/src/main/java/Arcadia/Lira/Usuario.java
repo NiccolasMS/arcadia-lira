@@ -1,5 +1,7 @@
 package Arcadia.Lira;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,7 +13,7 @@ public abstract class Usuario {
     private String nome;
     private String telefone;
 
-    private Boolean autenticado;
+    private Boolean autenticado = false;
     public List<Encomenda> encomendas;
 
 
@@ -47,8 +49,13 @@ public abstract class Usuario {
                 '}';
     }
 
+    public boolean isValido() {
+        return email!=null && email.length() >= 3
+                && senha!=null && senha.length() >= 3;
+    }
+
     public boolean validarSenha(String senha){
-        return senha.equals(senha);
+        return this.senha.equals(senha);
     }
     public Boolean getAutenticado() {
         return autenticado;
