@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 public class Morador extends Usuario {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMorador;
     private Boolean status = true;
@@ -22,8 +21,9 @@ public class Morador extends Usuario {
     public Morador() {
     }
 
-    public Morador(String email, String senha, String nome, String telefone, Long id, Boolean status, LocalDateTime dataRetorno, String numeroCelular, String bloco, String[] responsaveis, Integer controleResponsaveis) {
-        super(email, senha, nome, telefone);
+    public Morador(Long idUsuario, String nome, String email, String senha, String telefone, Long idMorador, Boolean status, LocalDateTime dataRetorno, String numeroCelular, String bloco, String[] responsaveis, Integer controleResponsaveis) {
+        super(idUsuario, nome, email, senha, telefone);
+        this.idMorador = idMorador;
         this.status = status;
         this.dataRetorno = dataRetorno;
         this.numeroCelular = numeroCelular;
@@ -32,7 +32,7 @@ public class Morador extends Usuario {
         this.controleResponsaveis = controleResponsaveis;
     }
 
-//    public void assinarQueRecebeu(Encomenda encomenda)
+    //    public void assinarQueRecebeu(Encomenda encomenda)
 //    {
 //        encomenda.setAssinaturaMorador(true);
 //    }

@@ -11,7 +11,7 @@ import java.util.List;
 public class Condominio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCondominio;
     private String nome;
     private String cidade;
     private String bairro;
@@ -53,11 +53,11 @@ public class Condominio {
     }
 
     public Long getId() {
-        return id;
+        return idCondominio;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idCondominio = id;
     }
 
     public String getNome() {

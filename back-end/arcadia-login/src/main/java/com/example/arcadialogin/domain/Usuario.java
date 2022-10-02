@@ -1,19 +1,17 @@
 package com.example.arcadialogin.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Usuario {
+@MappedSuperclass
+public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
     @NotBlank
     private String nome;
     @Email
@@ -28,19 +26,20 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String telefone) {
+    public Usuario(Long idUsuario, String nome, String email, String senha, String telefone) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.nome = nome;
         this.telefone = telefone;
     }
 
     public Long getId() {
-        return id;
+        return idUsuario;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idUsuario = id;
     }
 
     public String getNome() {
