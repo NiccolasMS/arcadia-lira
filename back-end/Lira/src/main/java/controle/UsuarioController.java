@@ -1,5 +1,6 @@
-package Arcadia.Lira;
+package controle;
 
+import dominio.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +10,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/login")
 public class UsuarioController {
+    private static Condominio condominio;
+    private static Usuario usuario;
 
-    Condominio condominio = new Condominio("Sptech","SP","Santo antonio",
-            "Itaquera",123);
-
-
-    @PostMapping("/cadastrarMorador")
+    /*@PostMapping("/cadastrarMorador")
     public ResponseEntity postMorador(@RequestBody Morador newUsuario){
         if(newUsuario.isValido())
         {
@@ -32,9 +31,9 @@ public class UsuarioController {
             return ResponseEntity.status(400).body("usuario e senha devem ter 3+ letras");
         }
 
-    }
+    }*/
 
-    @PostMapping("/cadastrarPorteiro")
+   /* @PostMapping("/cadastrarPorteiro")
     public ResponseEntity postPorteiro(@RequestBody Porteiro newUsuario){
 
         if(newUsuario.isValido())
@@ -52,9 +51,9 @@ public class UsuarioController {
             //BAD REQUEST
             return ResponseEntity.status(400).body("usuario e senha devem ter 3+ letras");
         }
-    }
+    }*/
 
-    @PostMapping("/autenticacao/{email}/{senha}")
+    /*@PostMapping("/autenticacao/{email}/{senha}")
     public ResponseEntity<Usuario> autenticarUsuario(@PathVariable String email,
                                                      @PathVariable String senha){
         for (Usuario usuario1 : condominio.getUsuarios()){
@@ -101,6 +100,21 @@ public class UsuarioController {
                 ? ResponseEntity.status(204).build()
                 : ResponseEntity.status(200).body(condominio.getUsuarios());
 
+    }*/
+
+    @PostMapping("/cadastrarEncomenda")
+    public static ResponseEntity postEncomenda(@RequestBody Encomenda novaEncomenda) {
+        if (usuario.getNmrElementos() >= usuario.getEncomendas().length) {
+            //405 método não permitido
+            // O método de solicitação é conhecido pelo servidor, mas foi desativado e não pode ser usado.
+            return ResponseEntity.status(405).body("Lista cheia!");
+        }
+        else {
+            usuario.getEncomendas()[usuario.getNmrElementos()] = novaEncomenda;
+            usuario.setNmrElementos(usuario.getNmrElementos()+1);
+
+            return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!\n"  + novaEncomenda);
+        }
     }
 
 }

@@ -1,22 +1,22 @@
-package Arcadia.Lira;
+package dominio;
 
-import Arcadia.Lira.Encomenda;
-import Arcadia.Lira.Usuario;
+import controle.UsuarioController;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Morador extends Usuario {
     private Boolean status = true;
     private LocalDateTime dataRetorno;
-    private String numeroCelular;
+    @NotBlank
     private String bloco;
     private String[] responsaveis = new String[5];
     private Integer controleResponsaveis = 0;
 
-    public Morador(String email, String senha, String nome, String telefone, String numeroCelular, String bloco) {
+    private UsuarioController usuarioController;
+
+    public Morador(String email, String senha, String nome, String telefone, String bloco) {
         super(email, senha, nome, telefone);
-        this.numeroCelular = numeroCelular;
         this.bloco = bloco;
     }
 
@@ -45,14 +45,9 @@ public class Morador extends Usuario {
         }
     }
 
-    @Override
-    public void cadastrarEncomenda(Encomenda encomenda) {
-        encomendas.add(encomenda);
-    }
 
-    @Override
-    public List<Encomenda> exibirEncomendas() {
-        return encomendas;
+    public void cadastrarEncomenda(Encomenda encomenda) {
+        UsuarioController.postEncomenda(encomenda);
     }
 
     public void getResponsaveis() {
@@ -71,10 +66,6 @@ public class Morador extends Usuario {
         return dataRetorno;
     }
 
-    public String getNumeroCelular() {
-        return numeroCelular;
-    }
-
     public String getBloco() {
         return bloco;
     }
@@ -85,10 +76,6 @@ public class Morador extends Usuario {
 
     public void setDataRetorno(LocalDateTime dataRetorno) {
         this.dataRetorno = dataRetorno;
-    }
-
-    public void setNumeroCelular(String numeroCelular) {
-        this.numeroCelular = numeroCelular;
     }
 
     public void setBloco(String bloco) {

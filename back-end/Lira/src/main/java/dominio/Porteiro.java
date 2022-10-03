@@ -1,22 +1,19 @@
-package Arcadia.Lira;
+package dominio;
+
+import controle.UsuarioController;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class Porteiro extends Usuario{
+public class Porteiro extends Usuario {
 
+    private static UsuarioController usuarioController;
     public Porteiro(String email, String senha, String nome, String telefone) {
         super(email, senha, nome, telefone);
     }
 
-    @Override
-    public void cadastrarEncomenda(Encomenda encomenda) {
-        encomendas.add(encomenda);
-    }
 
-    @Override
-    public List<Encomenda> exibirEncomendas() {
-        return encomendas;
+    public void cadastrarEncomenda(Encomenda encomenda) {
+        usuarioController.postEncomenda(encomenda);
     }
 
     public void setDataDeChegada(Encomenda encomenda)

@@ -1,18 +1,32 @@
-package Arcadia.Lira;
+package dominio;
 
+import nonapi.io.github.classgraph.json.Id;
+
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Encomenda implements Taxa{
+public class Encomenda implements Taxa {
 
+    @Id
     private String codigo;
+    @NotBlank
+    @Size(max = 13, min = 13)
     private String codigoDeRastreio;
+
+    @NotBlank
     private String nomeMorador;
+    @NotBlank
     private String nomeCondominio;
     private String status;
     private String descricao;
+    @FutureOrPresent
     private LocalDateTime dataChegada = LocalDateTime.now();
+
     private Long diasEmEspera;
+    @FutureOrPresent
     private LocalDateTime dataEntrega;
     private Double taxa = 0.0;
     private Boolean recebidoPorteiro = false;

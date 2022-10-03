@@ -1,20 +1,34 @@
-package Arcadia.Lira;
+package dominio;
 
+import nonapi.io.github.classgraph.json.Id;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Usuario {
+public abstract class Usuario<T> {
+    @Id
     private Integer idUsuario;
+    @NotBlank
+    @Email
     private String email;
+    @NotBlank
     private String senha;
+    @NotBlank
     private String nome;
+    //Validação para telefone primeira parte DDD um espaço e um número sendo de telefone começa com 8 ou 9
+    @Pattern(regexp = "^\\([1-9]{2}\\) (?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$")
     private String telefone;
 
     private Boolean autenticado = false;
-    public List<Encomenda> encomendas;
+    private T[] encomendas;
+    private int nmrElementos;
 
 
     //Quando o objeto usuário for criado, iremos dar um insert no banco , assim o id será auto_increment
@@ -31,11 +45,9 @@ public abstract class Usuario {
         this.telefone = telefone;
         this.autenticado = false;
 
-        this.encomendas = new ArrayList<>();
+        this.encomendas = (T[]) new Object[20];
+        this.nmrElementos = 0;
     }
-
-    public abstract void cadastrarEncomenda(Encomenda encomenda);
-    public abstract List<Encomenda> exibirEncomendas();
 
 
     @Override
@@ -52,6 +64,18 @@ public abstract class Usuario {
     public boolean isValido() {
         return email!=null && email.length() >= 3
                 && senha!=null && senha.length() >= 3;
+    }
+
+    public int getNmrElementos() {
+        return nmrElementos;
+    }
+
+    public void setNmrElementos(int nmrElementos) {
+        this.nmrElementos = nmrElementos;
+    }
+
+    public T[] getEncomendas() {
+        return encomendas;
     }
 
     public boolean validarSenha(String senha){
