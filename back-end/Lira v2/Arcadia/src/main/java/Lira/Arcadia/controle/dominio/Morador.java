@@ -22,21 +22,21 @@ public class Morador extends Usuario{
     @NotBlank
     private String bloco;
 
-   // @OneToMany
-   // @JoinTable(name = "Morador", joinColumns = @JoinColumn(name = "id"))
+
+    //@OneToMany(targetEntity = Morador.class)
+    //@JoinColumn(name = "id",foreignKey = @ForeignKey(name = "fkResponsavel"))
     //private List<Morador> responsaveis;
 
     public Morador(){
-        //responsaveis = new ArrayList<>();
+
     }
     public Morador(String email, String senha, String nome, String telefone,
                    String bloco) {
         super(email, senha, nome, telefone);
         this.bloco = bloco;
-       // responsaveis = new ArrayList<>();
+
+
     }
-
-
 
     public Integer getId() {
         return id;
@@ -120,7 +120,4 @@ public class Morador extends Usuario{
         super.setAutenticado(autenticado);
     }
 
-   // public List<Morador> getResponsaveis() {
-   //     return responsaveis;
-   // }
 }
