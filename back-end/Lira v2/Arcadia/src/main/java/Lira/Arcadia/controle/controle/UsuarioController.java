@@ -146,5 +146,22 @@ public class UsuarioController {
         //201 CREATED, geralmente utilizada com post
         return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!\n"  + newEncomenda);
     }
-
+    @GetMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody Morador morador, @RequestBody Porteiro porteiro) {
+        for (Morador usuario : moradorRepository.findAll()) {
+            if (usuario.getEmail().equals(morador.getEmail()) && usuario.getSenha().equals(morador.getSenha())) {
+                usuario.setAutenticado(true);
+                moradorRepository.save(morador);
+                return ResponseEntity.status(200).body("Login do usuário " + usuario.getNome() + " concluído");
+            }
+        }
+        for (Porteiro usuario : porteiroRepository.findAll()) {
+            if (usuario.getEmail().equals(porteiro.getEmail()) && usuario.getSenha().equals(porteiro.getSenha())) {
+                usuario.setAutenticado(true);
+                porteiroRepository.save(porteiro);
+                return ResponseEntity.status(200).body("Login do usuário " + usuario.getNome() + " concluído");
+            }
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
 }
