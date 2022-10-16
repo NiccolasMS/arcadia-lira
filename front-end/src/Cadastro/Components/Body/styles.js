@@ -2,14 +2,13 @@ import * as React from "react";
 
 const useStyles = () => ({
   centralizar: {
-    marginTop: "2%",
+    marginTop: "1%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
   },
   h1: {
-    fontFamily: "'Montserrat', sans-serif",
     marginBottom: "4%",
   },
   typography: {
@@ -21,10 +20,10 @@ const useStyles = () => ({
     position: "absolute",
     width: "300px",
     height: "300px",
-    marginTop: "40px",
+    marginTop: "80px",
     marginLeft: "210px",
     background:
-      "linear-gradient(180deg, #FF862F 17.19%, rgba(255, 134, 47, 0.6) 47.92%)",
+      "linear-gradient(180deg, #00A089 17.19%, rgba(0, 160, 137, 0.65) 52.6%)",
     transform: "rotate(35.45deg)",
   },
   imagem: {
@@ -33,29 +32,29 @@ const useStyles = () => ({
     width: "400px",
     height: "400px",
     marginLeft: "150px",
+    marginTop: "40px",
   },
   TextField: {
     borderRadius: "5px",
-    fontFamily: "'Montserrat', sans-serif",
     marginBottom: "2%",
     marginTop: "2%",
     backgroundColor: "white",
     width: "500px",
     "& label.Mui-focused": {
-      color: "#00A089",
+      color: "#FF862F",
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "#00A089",
+      borderBottomColor: "#FF862F",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#00A089",
+        borderColor: "#FF862F",
       },
       "&:hover fieldset": {
-        borderColor: "#00A089",
+        borderColor: "#FF862F",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#00A089",
+        borderColor: "#FF862F",
       },
     },
   },

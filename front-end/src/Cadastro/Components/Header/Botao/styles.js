@@ -7,13 +7,14 @@ const useStyles = () => ({
     },
     botao: {
         fontFamily: "'Montserrat', sans-serif",
+        color: "black",
         fontWeight: "bold",
-        color: "white",
-        backgroundColor: "#00A089",
+        backgroundColor: "#FF862F",
         width: "120px",
         "&:hover": {
-            backgroundColor: "#00A089",
-            color: "white",
+            fontFamily: "'Montserrat', sans-serif",
+            backgroundColor: "#FF862F",
+            color: "black",
             fontWeight: "bolder",
         },
         textTransform: "none",

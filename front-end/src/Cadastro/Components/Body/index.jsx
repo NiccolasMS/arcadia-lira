@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Box, Typography } from "@mui/material";
 import Botao from "./Botao/index";
-import imagem from "../../../../assets/imagemlogin.png";
+import imagem from "../../../../assets/imagemcadastro.png";
 
 import useStyles from "./styles";
 
@@ -18,8 +18,11 @@ function Body() {
       <Grid item sm={12} md={6} sx={styles.centralizar}>
         <Grid sx={styles.h1} item md={12}>
           <Typography sx={styles.typography} variant="h5">
-            Seja bem-vindo
+            Crie sua conta
           </Typography>
+        </Grid>
+        <Grid item md={12}>
+          <TextField sx={styles.TextField} label="Usuário" variant="outlined" />
         </Grid>
         <Grid item md={12}>
           <TextField sx={styles.TextField} label="Email" variant="outlined" />
@@ -28,16 +31,18 @@ function Body() {
           <TextField sx={styles.TextField} label="Senha" variant="outlined" />
         </Grid>
         <Grid item md={12}>
+          <TextField
+            sx={styles.TextField}
+            label="Confirme sua Senha"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item md={12}>
           <Botao />
         </Grid>
         <Grid item md={12}>
           <Typography sx={styles.typography}>
-            Não possui conta? <a href="/cadastro">Cadastre-se</a>
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <Typography sx={styles.typography}>
-            <a href="">Esqueceu a senha?</a>
+            Já possui conta? <a href="/login">Login</a>
           </Typography>
         </Grid>
       </Grid>

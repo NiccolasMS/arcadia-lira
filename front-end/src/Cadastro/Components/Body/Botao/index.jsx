@@ -8,7 +8,7 @@ function Botao() {
 
   return (
     <Button sx={styles.botao} size="large" variant="contained">
-      Criar minha conta
+      Entrar
     </Button>
   );
 }
