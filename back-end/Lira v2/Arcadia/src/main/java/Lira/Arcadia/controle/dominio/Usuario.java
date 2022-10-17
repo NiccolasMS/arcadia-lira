@@ -27,6 +27,7 @@ public abstract class Usuario {
     @NotBlank
     private String telefone;
 
+
     private Boolean autenticado = false;
 
     public Usuario(){
@@ -48,7 +49,7 @@ public abstract class Usuario {
         this.email = email;
     }
 
-    public String getSenha() {
+    public String senha() {
         return senha;
     }
 

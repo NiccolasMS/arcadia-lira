@@ -66,4 +66,17 @@ public class CondominioController {
         }
         return ResponseEntity.status(404).build();
     }
+
+//    @DeleteMapping("/deletarCondominio/{id}")
+//    public ResponseEntity<Object> deleteCondominio(@PathVariable int id) {
+//        Condominio condominio = repository.findById(id);
+//        if (condominio != null) {
+//            repository.deleteById(condominio.getId());
+//            lista.removePeloIndice(condominio.getId());
+//            return ResponseEntity.status(200).body("Condomínio deletado com sucesso!");
+//        }
+//
+//        return ResponseEntity.status(404).body("Condomínio não encontrado!");
+//    }
+
 }

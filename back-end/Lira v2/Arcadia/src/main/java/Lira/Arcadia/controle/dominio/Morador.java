@@ -14,7 +14,7 @@ public class Morador extends Usuario{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Boolean status = true;
+    private boolean status;
 
     @FutureOrPresent
     private LocalDateTime dataRetorno = null;
@@ -46,11 +46,11 @@ public class Morador extends Usuario{
         this.id = id;
     }
 
-    public Boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -81,8 +81,8 @@ public class Morador extends Usuario{
 
     }
     @Override
-    public String getSenha() {
-        return super.getSenha();
+    public String senha() {
+        return super.senha();
     }
 
     @Override
