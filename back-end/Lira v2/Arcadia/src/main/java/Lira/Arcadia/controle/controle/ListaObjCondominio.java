@@ -28,6 +28,15 @@ public class ListaObjCondominio<T> {
         }
     }
 
+    public void atualizaPeloIndice(int indice, Condominio elemento) {
+        if (indice < 0 || indice >= nroElem) {
+            System.out.println("Indice invalido!");
+        }
+        else {
+            vetor[indice] = elemento;
+        }
+    }
+
     public boolean removePeloIndice (int indice) {
         if (indice < 0 || indice >= nroElem) {
             System.out.println("\nÍndice inválido!");

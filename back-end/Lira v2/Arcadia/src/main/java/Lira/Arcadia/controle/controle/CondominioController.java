@@ -58,6 +58,18 @@ public class CondominioController {
         return ResponseEntity.status(404).build();
     }
 
+    @PutMapping("/alterarNumero/{id}/{numero}")
+    public ResponseEntity<Object> alterarNumero(@PathVariable int id,@PathVariable int numero){
+        Condominio condominio = repository.findById(id);
+        if(condominio != null){
+            condominio.setNumero(numero);
+            repository.save(condominio);
+            lista.atualizaPeloIndice(id - 1, condominio);
+            return ResponseEntity.status(200).body("Número do condomínio alterado com sucesso!");
+        }
+        return ResponseEntity.status(404).body("Condomínio não encontrado!");
+    }
+
     @DeleteMapping("/{nome}")
     public ResponseEntity deleteCondominio(@PathVariable String nome) {
         Condominio condominio = getCondominio(nome).getBody();
