@@ -91,7 +91,7 @@ public class CondominioController {
         Condominio condominio = repository.findById(id);
         if (condominio != null) {
             repository.deleteById(condominio.getId());
-            lista.removePeloIndice(condominio.getId() - 1);
+            lista.removePeloElemento(condominio);
 
             return ResponseEntity.status(200).body("Condomínio deletado com sucesso!");
         }
