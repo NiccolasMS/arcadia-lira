@@ -21,13 +21,14 @@ public class CondominioController {
 
         for (Condominio condominio1 : repository.findAll()){
             if (condominio1.getNome().equals(newCondominio.getNome())){
+                //Bad Request Essa resposta significa que o servidor não entendeu a requisição
                 return ResponseEntity.status(400).body("Condomínio já cadastrado com esse nome!");
             }
         }
         lista.adiciona(newCondominio);
         repository.save(newCondominio);
         //201 CREATED, geralmente utilizada com post
-        return ResponseEntity.status(200).body("Condomínio cadastrado com sucesso!\n"  + newCondominio);
+        return ResponseEntity.status(201).body("Condomínio cadastrado com sucesso!\n"  + newCondominio);
     }
 
     @GetMapping
@@ -36,6 +37,11 @@ public class CondominioController {
         //return lista.isEmpty()
          //       ? ResponseEntity.status(204).build()
          //       : ResponseEntity.status(200).body(lista);
+        if(lista.getNroElem() == 0)
+        {
+            //No content
+            return ResponseEntity.status(204).build();
+        }
 
         return ResponseEntity.status(200).body(lista.getElementos());
     }
@@ -48,6 +54,7 @@ public class CondominioController {
                 return ResponseEntity.status(200).body(condominio);
             }
         }
+        //Not Found
         return ResponseEntity.status(404).build();
     }
 
