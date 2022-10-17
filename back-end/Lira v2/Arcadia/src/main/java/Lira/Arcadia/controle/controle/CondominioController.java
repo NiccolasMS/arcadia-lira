@@ -64,7 +64,7 @@ public class CondominioController {
         if(condominio != null){
             condominio.setNumero(numero);
             repository.save(condominio);
-            lista.atualizaPeloIndice(id - 1, condominio);
+            lista.atualizaPeloId(id, condominio);
             return ResponseEntity.status(200).body("Número do condomínio alterado com sucesso!");
         }
         return ResponseEntity.status(404).body("Condomínio não encontrado!");

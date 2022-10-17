@@ -28,12 +28,12 @@ public class ListaObjCondominio<T> {
         }
     }
 
-    public void atualizaPeloIndice(int indice, Condominio elemento) {
-        if (indice < 0 || indice >= nroElem) {
-            System.out.println("Indice invalido!");
-        }
-        else {
-            vetor[indice] = elemento;
+    public void atualizaPeloId(int id, Condominio elemento) {
+        for (int i = 0; i < nroElem; i++) {
+            if (vetor[i].getId() == id) {
+                vetor[i] = elemento;
+                break;
+            }
         }
     }
 
