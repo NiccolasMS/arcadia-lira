@@ -6,6 +6,14 @@ public class ListaObjCondominio<T> {
     private Condominio[] vetor;
     private int nroElem;
 
+    public int getNroElem() {
+        return nroElem;
+    }
+
+    public void setNroElem(int nroElem) {
+        this.nroElem = nroElem;
+    }
+
     public ListaObjCondominio(int tamanho) {
         vetor = new Condominio[tamanho];
         nroElem = 0;
@@ -47,6 +55,8 @@ public class ListaObjCondominio<T> {
 
     public Condominio[] getElementos()
     {
+        Condominio[] condominios = new Condominio[nroElem];
+
         for(int i = 0; i < nroElem; i ++)
         {
             for(int j = 0; j < nroElem; j ++)
@@ -59,6 +69,12 @@ public class ListaObjCondominio<T> {
                 }
             }
         }
-        return vetor;
+
+        for(int i =0 ; i < nroElem; i ++)
+        {
+            condominios[i] = vetor[i];
+        }
+
+        return condominios;
     }
 }
