@@ -11,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
@@ -69,39 +70,35 @@ public class UsuarioController {
                 : ResponseEntity.status(200).body(porteiros);
     }
 
-    @PutMapping("/logoffMorador/{email}")
-    public ResponseEntity logoffMorador(@PathVariable String email, @RequestBody Morador morador){
-        for (Morador usuario1 : moradorRepository.findAll()){
-            if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(true)){
-                usuario1.setAutenticado(false);
-                moradorRepository.save(morador);
 
-                return ResponseEntity.status(200).body("Logoff do usuário " + usuario1.getNome() + " concluído");
-            }
-            if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(false)){
-                //401 não autenticado, cliente deve autenticar para receber uma resposta
-                return ResponseEntity.status(401).body("Usuário " + usuario1.getNome() + " NÃO está autenticado");
+    @PutMapping("/logoffMorador/{email}")
+    public ResponseEntity<Object> logoffMorador(@PathVariable String email){
+        Morador morador1 = moradorRepository.findByEmail(email);
+        if (morador1 != null){
+            if (morador1.getAutenticado()){
+                morador1.setAutenticado(false);
+                moradorRepository.save(morador1);
+                return ResponseEntity.status(200).body("Morador deslogado com sucesso!");
+            }else {
+                return ResponseEntity.status(400).body("Morador não está logado!");
             }
         }
-        //404 não encontrado
-        return ResponseEntity.status(404).body("Usuário " + email + " não encontrado");
+        return ResponseEntity.status(400).body("Morador não encontrado!");
     }
 
     @PutMapping("/logoffPorteiro/{email}")
-    public ResponseEntity logoffPorteiro(@PathVariable String email, @RequestBody Porteiro porteiro){
-        for (Usuario usuario1 : porteiroRepository.findAll()){
-            if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(true)){
-                usuario1.setAutenticado(false);
-                porteiroRepository.save(porteiro);
-                return ResponseEntity.status(200).body("Logoff do usuário " + usuario1.getNome() + " concluído");
-            }
-            if (email.equals(usuario1.getEmail()) && usuario1.getAutenticado().equals(false)){
-                //401 não autenticado, cliente deve autenticar para receber uma resposta
-                return ResponseEntity.status(401).body("Usuário " + usuario1.getNome() + " NÃO está autenticado");
+    public ResponseEntity logoffPorteiro(@PathVariable String email){
+        Porteiro porteiro1 = porteiroRepository.findByEmail(email);
+        if (porteiro1 != null){
+            if (porteiro1.getAutenticado()){
+                porteiro1.setAutenticado(false);
+                porteiroRepository.save(porteiro1);
+                return ResponseEntity.status(200).body("Porteiro deslogado com sucesso!");
+            }else {
+                return ResponseEntity.status(400).body("Porteiro não está logado!");
             }
         }
-        //404 não encontrado
-        return ResponseEntity.status(404).body("Usuário " + email + " não encontrado");
+        return ResponseEntity.status(400).body("Porteiro não encontrado!");
     }
 
     @DeleteMapping("/excluirMorador/{email}")
@@ -112,7 +109,7 @@ public class UsuarioController {
             if(email.equals(usuario.getEmail()))
             {
                moradorRepository.deleteById(usuario.getId());
-               return ResponseEntity.status(200).build();
+               return ResponseEntity.status(200).body("Morador " + usuario.getNome() + " excluído com sucesso");
             }
         }
               return ResponseEntity.status(404).build();
@@ -126,7 +123,7 @@ public class UsuarioController {
             if(email.equals(usuario.getEmail()))
             {
                 porteiroRepository.deleteById(usuario.getId());
-                return ResponseEntity.status(200).build();
+                return ResponseEntity.status(200).body("Porteiro " + usuario.getNome() + " excluído com sucesso");
             }
         }
                 return ResponseEntity.status(404).build();
@@ -146,5 +143,32 @@ public class UsuarioController {
         //201 CREATED, geralmente utilizada com post
         return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!\n"  + newEncomenda);
     }
-
+    @GetMapping("/loginMorador")
+    public ResponseEntity<Object> login(@RequestBody Morador morador){
+        Morador usuario = moradorRepository.findByEmail(morador.getEmail());
+        if (usuario != null) {
+            if (usuario.senha().equals(morador.senha())) {
+                usuario.setAutenticado(true);
+                moradorRepository.save(usuario);
+                return ResponseEntity.status(200).body("Login realizado com sucesso!");
+            }else {
+                return ResponseEntity.status(401).body("Usuário ou senha incorretos!");
+            }
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
+    @GetMapping("/loginPorteiro")
+    public ResponseEntity<Object> login(@RequestBody Porteiro porteiro) {
+        Porteiro usuario = porteiroRepository.findByEmail(porteiro.getEmail());
+        if (usuario != null) {
+            if (usuario.senha().equals(porteiro.senha())) {
+                usuario.setAutenticado(true);
+                porteiroRepository.save(usuario);
+                return ResponseEntity.status(200).body("Login realizado com sucesso!");
+            }else {
+                return ResponseEntity.status(401).body("Usuário ou senha incorretos!");
+            }
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
 }

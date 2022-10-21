@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/porteiro")
+@RequestMapping("/porteiros")
 public class PorteiroController {
     @Autowired
     private PorteiroRepository porteiroRepository;
@@ -18,7 +18,7 @@ public class PorteiroController {
                                                       @PathVariable String senha,
                                                       @RequestBody Porteiro porteiro){
         for (Usuario usuario1 : porteiroRepository.findAll()){
-            if (email.equals(usuario1.getEmail()) && senha.equals(usuario1.getSenha())){
+            if (email.equals(usuario1.getEmail()) && senha.equals(usuario1.senha())){
                 usuario1.setAutenticado(true);
                 porteiroRepository.save(porteiro);
                 return ResponseEntity.status(200).body(usuario1);

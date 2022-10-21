@@ -4,4 +4,5 @@ import Lira.Arcadia.controle.dominio.Morador;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MoradorRepository extends JpaRepository<Morador, Integer> {
+    Morador findByEmail(String email);
 }

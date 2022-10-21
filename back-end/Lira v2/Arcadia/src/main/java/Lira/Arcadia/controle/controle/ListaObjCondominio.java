@@ -28,6 +28,15 @@ public class ListaObjCondominio<T> {
         }
     }
 
+    public void atualizaPeloId(int id, Condominio elemento) {
+        for (int i = 0; i < nroElem; i++) {
+            if (vetor[i].getId() == id) {
+                vetor[i] = elemento;
+                break;
+            }
+        }
+    }
+
     public boolean removePeloIndice (int indice) {
         if (indice < 0 || indice >= nroElem) {
             System.out.println("\nÍndice inválido!");
@@ -42,6 +51,21 @@ public class ListaObjCondominio<T> {
 
         nroElem--;
         return true;
+    }
+
+    public boolean removePeloElemento (Condominio elemento) {
+        for (int i = 0; i < nroElem; i++) {
+            if (vetor[i].getId() == elemento.getId()) {
+                // Loop para "deslocar para a esquerda" os elementos do vetor
+                // sobrescrevendo o elemento removido
+                for (int j = i; j < nroElem-1; j++) {
+                    vetor[j] = vetor[j+1];
+                }
+                nroElem--;
+                return true;
+            }
+        }
+        return false;
     }
 
     public Condominio getElemento(int indice) {

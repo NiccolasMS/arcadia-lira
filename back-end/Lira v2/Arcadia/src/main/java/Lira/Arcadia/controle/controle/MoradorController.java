@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/morador")
+@RequestMapping("/moradores")
 public class MoradorController {
     @Autowired
     private MoradorRepository moradorRepository;
@@ -22,7 +22,7 @@ public class MoradorController {
                                                      @PathVariable String senha,
                                                      @RequestBody Morador morador){
         for (Usuario usuario1 : moradorRepository.findAll()){
-            if (email.equals(usuario1.getEmail()) && senha.equals(usuario1.getSenha())){
+            if (email.equals(usuario1.getEmail()) && senha.equals(usuario1.senha())){
                 usuario1.setAutenticado(true);
                 moradorRepository.save(morador);
                 return ResponseEntity.status(200).body(usuario1);
@@ -31,7 +31,5 @@ public class MoradorController {
         //401 não autorizado
         return ResponseEntity.status(401).build();
     }
-
-
 
 }
