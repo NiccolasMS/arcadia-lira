@@ -2,6 +2,7 @@ package Lira.Arcadia.controle.dominio;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -9,6 +10,9 @@ import java.time.LocalDateTime;
 public class Controle {
     @Id
     private Integer id;
+
+    @ManyToOne
+    private Condominio condominio;
     private LocalDateTime diaHora;
     @NotNull
     private Integer quantidadeEntregasParaChegar;
@@ -32,6 +36,14 @@ public class Controle {
         this.quantidadeEntregasVencidas = quantidadeEntregasVencidas;
         this.quantidadeEntregasProximasAVencer = quantidadeEntregasProximasAVencer;
         this.espacoNoEstoque = espacoNoEstoque;
+    }
+
+    public Condominio getCondominio() {
+        return condominio;
+    }
+
+    public void setCondominio(Condominio condominio) {
+        this.condominio = condominio;
     }
 
     public Integer getId() {
