@@ -1,7 +1,6 @@
 package Lira.Arcadia.controle.dominio;
 
 import javax.persistence.*;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -15,20 +14,16 @@ public class Encomenda {
     @NotBlank
     private String codigoDeRastreio;
 
-    @ManyToOne
-    private Condominio condominio;
-
-    @ManyToOne
-    private Morador morador;
-
     private String status;
 
     private String descricao;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataChegada;
 
     private Long diasEmEspera;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataEntrega;
 
     private Double taxa;
@@ -38,6 +33,11 @@ public class Encomenda {
     private Boolean entreguePorteiro;
 
     private Boolean assinaturaMorador;
+    @ManyToOne
+    private Condominio condominio;
+
+    @ManyToOne
+    private Morador morador;
 
     public Encomenda() {
 
@@ -101,7 +101,7 @@ public class Encomenda {
         return dataChegada;
     }
 
-    public void setDataChegada() {
+    public void setDataChegada(LocalDateTime now) {
         this.dataChegada = LocalDateTime.now();
     }
 
