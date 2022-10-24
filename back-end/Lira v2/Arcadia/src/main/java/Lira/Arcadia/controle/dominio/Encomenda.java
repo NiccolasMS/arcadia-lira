@@ -1,9 +1,6 @@
 package Lira.Arcadia.controle.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -18,10 +15,11 @@ public class Encomenda {
     @NotBlank
     private String codigoDeRastreio;
 
-    @NotBlank
-    private String nomeMorador;
-    @NotBlank
-    private String nomeCondominio;
+    @ManyToOne
+    private Condominio condominio;
+
+    @ManyToOne
+    private Morador morador;
 
     private String status;
 
@@ -45,10 +43,10 @@ public class Encomenda {
 
     }
 
-    public Encomenda(String codigoDeRastreio, String nomeMorador, String nomeCondominio) {
+    public Encomenda(String codigoDeRastreio, Morador morador, Condominio condominio) {
         this.codigoDeRastreio = codigoDeRastreio;
-        this.nomeMorador = nomeMorador;
-        this.nomeCondominio = nomeCondominio;
+        this.morador = morador;
+        this.condominio = condominio;
     }
 
     public Integer getId() {
@@ -67,20 +65,20 @@ public class Encomenda {
         this.codigoDeRastreio = codigoDeRastreio;
     }
 
-    public String getNomeMorador() {
-        return nomeMorador;
+    public Morador getMorador() {
+        return morador;
     }
 
-    public void setNomeMorador(String nomeMorador) {
-        this.nomeMorador = nomeMorador;
+    public void setMorador(Morador morador) {
+        this.morador = morador;
     }
 
-    public String getNomeCondominio() {
-        return nomeCondominio;
+    public Condominio getCondominio() {
+        return condominio;
     }
 
-    public void setNomeCondominio(String nomeCondominio) {
-        this.nomeCondominio = nomeCondominio;
+    public void setCondominio(Condominio condominio) {
+        this.condominio = condominio;
     }
 
     public String getStatus() {

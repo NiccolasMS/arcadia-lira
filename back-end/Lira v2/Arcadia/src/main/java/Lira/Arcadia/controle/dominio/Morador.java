@@ -22,10 +22,8 @@ public class Morador extends Usuario{
     @NotBlank
     private String bloco;
 
-
-    //@OneToMany(targetEntity = Morador.class)
-    //@JoinColumn(name = "id",foreignKey = @ForeignKey(name = "fkResponsavel"))
-    //private List<Morador> responsaveis;
+    @ManyToOne
+    private Morador responsaveis;
 
     public Morador(){
 
@@ -36,6 +34,14 @@ public class Morador extends Usuario{
         this.bloco = bloco;
 
 
+    }
+
+    public Morador getResponsaveis() {
+        return responsaveis;
+    }
+
+    public void setResponsaveis(Morador responsaveis) {
+        this.responsaveis = responsaveis;
     }
 
     public Integer getId() {

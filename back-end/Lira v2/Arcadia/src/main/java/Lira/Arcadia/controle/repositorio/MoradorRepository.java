@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MoradorRepository extends JpaRepository<Morador, Integer> {
     Morador findByEmail(String email);
+    Morador findByNome(String nome);
 }
