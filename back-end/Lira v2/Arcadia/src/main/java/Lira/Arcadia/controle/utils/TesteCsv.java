@@ -20,7 +20,7 @@ public class TesteCsv {
         encomenda1.setDataEntrega(LocalDateTime.now());
         lista.add(encomenda1);
 
-        GerarCsv.gravaArquivoCsv(lista, "teste.csv");
+        GerarCsv.gerarCsvEncomenda(lista, "teste.csv");
 
 
     }

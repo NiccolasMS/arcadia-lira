@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class GerarCsv {
-    public static void gravaArquivoCsv(List<Encomenda> lista, String nomeArq){
+    public static void gerarCsvEncomenda(List<Encomenda> lista, String nomeArq){
         FileWriter arq = null; // objeto que representa o arquivo de escrita
         Formatter saida = null; // objeto usado para escrever no arquivo
         boolean deuRuim = false;
@@ -30,12 +30,9 @@ public class GerarCsv {
             String dataChegada = "";
             String dataEntrega = "";
             for (Encomenda encomenda : lista) {
-                if (encomenda.getDataChegada() != null) {
-                    dataChegada = encomenda.getDataChegada().format(formatter);
-                }
-                if (encomenda.getDataEntrega() != null) {
-                    dataEntrega = encomenda.getDataEntrega().format(formatter);
-                }
+                if (encomenda.getDataChegada() != null) dataChegada = encomenda.getDataChegada().format(formatter);
+                if (encomenda.getDataEntrega() != null) dataEntrega = encomenda.getDataEntrega().format(formatter);
+
                 saida.format("%d;%s;%s;%s;%s;%d;%s\n", encomenda.getId(), encomenda.getCodigoDeRastreio(),
                         encomenda.getStatus(), encomenda.getDescricao(), dataChegada,
                         encomenda.getDiasEmEspera(), dataEntrega);
