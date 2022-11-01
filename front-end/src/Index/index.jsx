@@ -5,6 +5,7 @@ import Body from "./Components/Body/index";
 
 import useStyles from "./styles";
 import Informacoes from "./Components/Informacoes";
+import Valores from "./Components/Valores";
 
 function Index() {
   const styles = useStyles();
@@ -15,6 +16,7 @@ function Index() {
         <Body />
       </Box>
       <Informacoes />
+      <Valores />
     </>
   );
 }

@@ -59,7 +59,7 @@ const useStyles = () => ({
     boxSizing: "border-box",
     position: "absolute",
     height: "300px",
-    marginLeft: "858px",
+    marginLeft: "843px",
     marginTop: "-130px",
     zIndex: 1,
   },
