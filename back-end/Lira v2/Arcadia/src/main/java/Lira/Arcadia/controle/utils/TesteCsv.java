@@ -15,9 +15,9 @@ public class TesteCsv {
         encomenda1.setCodigoDeRastreio("123456789");
         encomenda1.setStatus("Em trânsito");
         encomenda1.setDescricao("Encomenda de teste");
-        encomenda1.setDataChegada(LocalDateTime.now());
-        encomenda1.setDiasEmEspera(2L);
-        encomenda1.setDataEntrega(LocalDateTime.now());
+        encomenda1.setDataChegada();
+        encomenda1.setDiasEmEspera();
+        encomenda1.setDataEntrega();
         lista.add(encomenda1);
 
         GerarCsv.gerarCsvEncomenda(lista, "teste.csv");

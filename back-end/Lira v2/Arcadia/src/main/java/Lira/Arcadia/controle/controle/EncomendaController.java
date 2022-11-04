@@ -51,4 +51,6 @@ public class EncomendaController {
         }
         return ResponseEntity.status(404).body("Encomenda não encontrada!");
     }
+
+
 }

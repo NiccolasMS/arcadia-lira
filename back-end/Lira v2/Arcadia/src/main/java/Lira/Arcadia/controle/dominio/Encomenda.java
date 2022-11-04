@@ -18,12 +18,10 @@ public class Encomenda {
 
     private String descricao;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataChegada;
 
     private Long diasEmEspera;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime dataEntrega;
 
     private Double taxa;
@@ -101,7 +99,7 @@ public class Encomenda {
         return dataChegada;
     }
 
-    public void setDataChegada(LocalDateTime now) {
+    public void setDataChegada() {
         this.dataChegada = LocalDateTime.now();
     }
 
@@ -109,7 +107,7 @@ public class Encomenda {
         return diasEmEspera;
     }
 
-    public void setDiasEmEspera(Long diasEmEspera) {
+    public void setDiasEmEspera() {
         this.diasEmEspera = dataChegada.until(LocalDateTime.now(), ChronoUnit.DAYS);
     }
 
@@ -117,7 +115,7 @@ public class Encomenda {
         return dataEntrega;
     }
 
-    public void setDataEntrega(LocalDateTime dataEntrega) {
+    public void setDataEntrega() {
         this.dataEntrega = LocalDateTime.now();
     }
 
