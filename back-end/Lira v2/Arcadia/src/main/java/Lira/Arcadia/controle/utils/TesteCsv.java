@@ -13,7 +13,7 @@ public class TesteCsv {
         Encomenda encomenda1 = new Encomenda();
         encomenda1.setId(1);
         encomenda1.setCodigoDeRastreio("123456789");
-        encomenda1.setStatus("Em trânsito");
+        encomenda1.setStatus();
         encomenda1.setDescricao("Encomenda de teste");
         encomenda1.setDataChegada();
         encomenda1.setDiasEmEspera();

@@ -2,6 +2,7 @@ package Lira.Arcadia.controle.controle;
 
 import Lira.Arcadia.controle.dominio.Encomenda;
 import Lira.Arcadia.controle.repositorio.EncomendaRepository;
+import Lira.Arcadia.controle.utils.GerarCsv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -130,5 +131,13 @@ public class EncomendaController {
         }
 
         return encomenda2.getTopo();
+    }
+
+    @GetMapping("/gerarCsv")
+    public ResponseEntity gerarCsv()
+    {
+        List<Encomenda> encomendas = repository.findAll();
+        GerarCsv.gerarCsvEncomenda(encomendas, "encomendas.csv");
+        return ResponseEntity.status(200).body("Arquivo gerado com sucesso!");
     }
 }
