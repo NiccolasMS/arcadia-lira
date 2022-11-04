@@ -6,17 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/encomendas")
 public class EncomendaController {
+
     @Autowired
     private EncomendaRepository repository;
+
+    private List<Encomenda> encomendas = new ArrayList<>();
 
     @PostMapping
     public ResponseEntity<Object> cadastrarEncomenda(@RequestBody Encomenda encomenda){
         if (repository.findAll().contains(encomenda)){
             return ResponseEntity.status(400).body("Encomenda já cadastrada!");
         }
+        encomenda.setTopo();
+        encomenda.push("Entregue");
+        encomenda.push("Chegando");
+        encomenda.push("Transportando");
+        encomenda.push("Empacotando");
+        encomenda.setStatus();
+
+        encomendas.add(encomenda);
         repository.save(encomenda);
         return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!");
     }
@@ -50,5 +65,70 @@ public class EncomendaController {
             }
         }
         return ResponseEntity.status(404).body("Encomenda não encontrada!");
+    }
+
+    @PutMapping("/atualizar-status/{id}")
+    public ResponseEntity atualizarStatus(@PathVariable int id)
+    {
+       Encomenda encomenda = repository.findById(id);
+       Encomenda encomenda2 = null;
+
+       for(Encomenda e : encomendas)
+       {
+           if(e.getId() == id)
+           {
+               encomenda2 = e;
+           }
+       }
+
+
+       if(encomenda != null)
+       {
+
+           if(encomenda2.pop() != null){
+               encomenda2.setStatus();
+
+               repository.save(encomenda2);
+
+               return ResponseEntity.status(200).body("Status atualizado para " + encomenda.getStatus());
+           }
+                //405 Method Not Allowed O método de solicitação é conhecido pelo servidor,
+                 // mas foi desativado e não pode ser usado.
+                return  ResponseEntity.status(405).build();
+       }
+
+        return ResponseEntity.status(404).body("Encomenda não encontrada!");
+    }
+
+    @GetMapping("/pilha/{id}")
+            public String[] pilha(@PathVariable int id)
+    {
+        Encomenda encomenda2 = null;
+
+        for(Encomenda e : encomendas)
+        {
+            if(e.getId() == id)
+            {
+                encomenda2 = e;
+            }
+        }
+
+       return encomenda2.pilha();
+    }
+
+    @GetMapping("/topo/{id}")
+    public int topo(@PathVariable int id)
+    {
+        Encomenda encomenda2 = null;
+
+        for(Encomenda e : encomendas)
+        {
+            if(e.getId() == id)
+            {
+                encomenda2 = e;
+            }
+        }
+
+        return encomenda2.getTopo();
     }
 }
