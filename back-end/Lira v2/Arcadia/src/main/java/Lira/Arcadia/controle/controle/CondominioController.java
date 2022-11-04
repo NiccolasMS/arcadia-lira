@@ -32,18 +32,18 @@ public class CondominioController {
     }
 
     @GetMapping
-    public ResponseEntity<Condominio[]> getCondominios() {
-        //List<Condominio> lista = repository.findAll();
-        //return lista.isEmpty()
-         //       ? ResponseEntity.status(204).build()
-         //       : ResponseEntity.status(200).body(lista);
-        if(lista.getNroElem() == 0)
-        {
+    public ResponseEntity<List<Condominio>> getCondominios() {
+        List<Condominio> lista = repository.findAll();
+        return lista.isEmpty()
+               ? ResponseEntity.status(204).build()
+                : ResponseEntity.status(200).body(lista);
+        //if(lista.getNroElem() == 0)
+        //{
             //No content
-            return ResponseEntity.status(204).build();
-        }
-
-        return ResponseEntity.status(200).body(lista.getElementos());
+         //   return ResponseEntity.status(204).build();
+       // }
+        //Mudar para ResponseEntity<Condominio[]>
+       // return ResponseEntity.status(200).body(lista.getElementos());
     }
 
     @GetMapping("/{nome}")

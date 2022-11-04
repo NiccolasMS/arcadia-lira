@@ -129,18 +129,6 @@ public class UsuarioController {
                 return ResponseEntity.status(404).build();
     }
 
-    @PostMapping("/cadastrarEncomenda")
-    public ResponseEntity postEncomenda(@RequestBody Encomenda newEncomenda)
-    {
-        for (Encomenda encomenda : encomendaRepository.findAll()){
-            if (encomenda.getCodigoDeRastreio().equals(newEncomenda.getCodigoDeRastreio())){
-                return ResponseEntity.status(400).body("Encomenda já cadastrada com esse código");
-            }
-        }
-        encomendaRepository.save(newEncomenda);
-        //201 CREATED, geralmente utilizada com post
-        return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!\n"  + newEncomenda);
-    }
     @GetMapping("/loginMorador")
     public ResponseEntity<Object> login(@RequestBody Morador morador){
         Morador usuario = moradorRepository.findByEmail(morador.getEmail());

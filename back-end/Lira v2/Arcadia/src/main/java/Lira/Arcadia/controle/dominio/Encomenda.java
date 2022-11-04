@@ -1,5 +1,8 @@
 package Lira.Arcadia.controle.dominio;
 
+import Lira.Arcadia.controle.controle.Pilha;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -15,6 +18,11 @@ public class Encomenda {
     private String codigoDeRastreio;
 
     private String status;
+
+    @Transient
+    private String[] pilha =  new String[4];;
+    @Transient
+    private int topo;
 
     private String descricao;
 
@@ -47,6 +55,79 @@ public class Encomenda {
         this.condominio = condominio;
     }
 
+    public String[] pilha() {
+        return pilha;
+    }
+
+    // 03) Método isEmpty
+    public Boolean isEmpty() {
+
+        if(topo == -1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // 04) Método isFull
+    public Boolean isFull() {
+
+        if(topo == (pilha.length - 1))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // 05) Método push
+    public void push(String info) {
+
+        if(isFull())
+
+        {
+            throw new IllegalStateException("Pilha cheia");
+        }
+
+        pilha[++topo] = info;
+
+    }
+
+    // 06) Método pop
+    public String pop() {
+
+        if(isEmpty() == false && topo != 0)
+        {
+            return pilha[topo--];
+        }
+        return null;
+    }
+
+    // 07) Método peek
+    public String peek() {
+        if(isEmpty() == false)
+        {
+            return pilha[topo];
+        }
+        return null;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public String setStatus(){
+       this.status = peek();
+       return this.status;
+    }
+
+    public int getTopo() {
+        return topo;
+    }
+
+    public void setTopo() {
+        this.topo = -1;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -77,14 +158,6 @@ public class Encomenda {
 
     public void setCondominio(Condominio condominio) {
         this.condominio = condominio;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getDescricao() {
