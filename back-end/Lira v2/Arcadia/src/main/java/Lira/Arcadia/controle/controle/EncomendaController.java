@@ -2,6 +2,7 @@ package Lira.Arcadia.controle.controle;
 
 import Lira.Arcadia.controle.dominio.Encomenda;
 import Lira.Arcadia.controle.repositorio.EncomendaRepository;
+import Lira.Arcadia.controle.utils.Fila;
 import Lira.Arcadia.controle.utils.GerarCsv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @RequestMapping("/encomendas")
 public class EncomendaController {
 
+    Fila fila = new Fila(100);
     @Autowired
     private EncomendaRepository repository;
 
@@ -101,38 +103,6 @@ public class EncomendaController {
         return ResponseEntity.status(404).body("Encomenda não encontrada!");
     }
 
-    @GetMapping("/pilha/{id}")
-            public String[] pilha(@PathVariable int id)
-    {
-        Encomenda encomenda2 = null;
-
-        for(Encomenda e : encomendas)
-        {
-            if(e.getId() == id)
-            {
-                encomenda2 = e;
-            }
-        }
-
-       return encomenda2.pilha();
-    }
-
-    @GetMapping("/topo/{id}")
-    public int topo(@PathVariable int id)
-    {
-        Encomenda encomenda2 = null;
-
-        for(Encomenda e : encomendas)
-        {
-            if(e.getId() == id)
-            {
-                encomenda2 = e;
-            }
-        }
-
-        return encomenda2.getTopo();
-    }
-
     @GetMapping("/gerarCsv")
     public ResponseEntity gerarCsv()
     {
@@ -140,4 +110,54 @@ public class EncomendaController {
         GerarCsv.gerarCsvEncomenda(encomendas, "encomendas.csv");
         return ResponseEntity.status(200).body("Arquivo gerado com sucesso!");
     }
+
+    @PutMapping("/data-chegada/{id}")
+    public ResponseEntity putDataChegada(@PathVariable int id)
+    {
+
+        Encomenda encomenda = repository.findById(id);
+
+        if(encomenda != null)
+        {
+            encomenda.setDataChegada();
+            fila.insert(encomenda);
+            return ResponseEntity.status(200).body(repository.save(encomenda));
+        }
+
+            return ResponseEntity.status(404).body("Encomenda não encontrada!");
+    }
+
+    @GetMapping("/lista-prioridade")
+    public ResponseEntity<List<Encomenda>> getListaPrioridade()
+    {
+        if(fila.exibe().isEmpty())
+        {
+          return   ResponseEntity.status(204).build();
+        }
+          return ResponseEntity.status(200).body(fila.exibe());
+    }
+
+    @GetMapping("/prioridade")
+    public ResponseEntity<Encomenda> getPrioridade()
+    {
+        if(fila.peek() == null)
+        {
+            return ResponseEntity.status(204).build();
+        }
+
+            return ResponseEntity.status(200).body(fila.peek());
+    }
+
+    @DeleteMapping("/deletar-prioridade")
+    public ResponseEntity<Encomenda> deletePrioridade()
+    {
+        if(fila.peek() == null)
+        {
+            return ResponseEntity.status(204).build();
+        }
+
+            return ResponseEntity.status(200).body(fila.poll());
+    }
+
+
 }
