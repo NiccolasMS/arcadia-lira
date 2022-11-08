@@ -11,4 +11,6 @@ Insert into porteiro (email,nome,senha,telefone,condominio_id)
 values ('Willians@gmail.com','Willians Ribeiro','4321','(11) 9234-5376',1);
 
 Insert into encomenda (codigo_de_rastreio, morador_id,condominio_id)
-values ('SL123456789BR', 1, 1);
+values ('SL123456789BR', 1, 1),
+       ('SL443456789BR', 2, 1),
+       ('SL123422789BR', 3, 1);

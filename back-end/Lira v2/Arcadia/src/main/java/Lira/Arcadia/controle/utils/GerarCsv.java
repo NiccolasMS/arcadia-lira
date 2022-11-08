@@ -16,7 +16,7 @@ public class GerarCsv {
         // Bloco try-catch para abrir o arquivo
 
         try{
-            arq = new FileWriter(nomeArq);
+            arq = new FileWriter(nomeArq, true);
             saida = new Formatter(arq);
         }catch (IOException erro){
             System.out.println("Erro ao abrir o arquivo");
