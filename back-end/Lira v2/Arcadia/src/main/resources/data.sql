@@ -1,3 +1,15 @@
+Use Arcadia;
+
+create table  [dbo].[condominio] (
+       id integer IDENTITY(1,1),
+        bairro varchar(255),
+        cidade varchar(255),
+        nome varchar(255),
+        numero integer not null check (numero>=0),
+        rua varchar(255),
+        primary key (id)
+    );
+
 Insert into condominio (bairro,cidade,nome,numero,rua)
 values ('Consolação','São Paulo','SpPalace',83,'Haddock Lobo'),
        ('Faria Lima','Rio de Janeiro', 'Rio Plazza', 9, 'Jõao de Andrade');
