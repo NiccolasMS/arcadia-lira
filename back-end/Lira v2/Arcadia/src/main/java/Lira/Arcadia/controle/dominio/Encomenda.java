@@ -55,6 +55,11 @@ public class Encomenda {
         this.condominio = condominio;
     }
 
+    public Encomenda(String codigoDeRastreio, String descricao) {
+        this.codigoDeRastreio = codigoDeRastreio;
+        this.descricao = descricao;
+    }
+
     public String[] pilha() {
         return pilha;
     }
