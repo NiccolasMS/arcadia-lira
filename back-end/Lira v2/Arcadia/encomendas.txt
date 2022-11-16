@@ -1,25 +1,3 @@
-ENCOMENDA15-11-2022 01:09:4901
-021234567890123Encomenda 1                                       
-021234567890124Encomenda 2                                       
-021234567890125Encomenda 3                                       
-021234567890126Encomenda 4                                       
-021234567890127Encomenda 5                                       
-021234567890128Encomenda 6                                       
-021234567890129Encomenda 7                                       
-021234567890130Encomenda 8                                       
-021234567890131Encomenda 9                                       
-021234567890132Encomenda 10                                      
-021234567890133Encomenda 11                                      
-021234567890134Encomenda 12                                      
-021234567890135Encomenda 13                                      
-021234567890136Encomenda 14                                      
-021234567890137Encomenda 15                                      
-021234567890138Encomenda 16                                      
-021234567890139Encomenda 17                                      
-021234567890140Encomenda 18                                      
-021234567890141Encomenda 19                                      
-021234567890142Encomenda 20                                      
-021234567890143Encomenda 21                                      
-021234567890144Encomenda 22                                      
-021234567890145Encomenda 23                                      
-010000000023
+ENCOMENDA16-11-2022 00:29:5201
+02Controle Video Game                               21407682809  Empacotando    
+010000000001

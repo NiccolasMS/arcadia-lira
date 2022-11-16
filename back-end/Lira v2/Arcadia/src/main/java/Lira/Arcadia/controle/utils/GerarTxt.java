@@ -47,8 +47,9 @@ public class GerarTxt {
         String corpo;
         for (Encomenda encomenda : lista) {
             corpo = "02";
-            corpo += String.format("%-13.13s", encomenda.getCodigoDeRastreio());
             corpo += String.format("%-50.50s", encomenda.getDescricao());
+            corpo += String.format("%-13.13s", encomenda.getCodigoDeRastreio());
+            corpo += String.format("%-15.15s", encomenda.getStatus());
 //            corpo += String.format("%05.2f", aluno.getMedia());
 //            corpo += String.format("%03d", aluno.getQtdFalta());
             gravaRegistro(corpo, nomeArq);
@@ -64,7 +65,7 @@ public class GerarTxt {
     public static void leArquivoTxt(String nomeArq) {
         BufferedReader entrada = null;
         String registro, tipoRegistro;
-        String nome, codigoDeRastreio, descricao, status;
+        String codigoDeRastreio, descricao, status;
         int contaRegDadosLido = 0;
         int qtdRegDadoGravado;
 
@@ -115,12 +116,13 @@ public class GerarTxt {
                 }
                 else if(tipoRegistro.equals("02")){
                     System.out.println("Registro de corpo");
-                    codigoDeRastreio = registro.substring(2, 15);
-                    descricao = registro.substring(15, 65);
+                    descricao = registro.substring(2, 52);
+                    codigoDeRastreio = registro.substring(52, 65);
+                    status = registro.substring(65, 80);
                     contaRegDadosLido++;
 
                     //Instancia um objeto Aluno com as informações lidas
-                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao);
+                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, status);
 
                     //No Projeto de PI, pode fazer
                     //repository.save(aluno);
@@ -150,39 +152,39 @@ public class GerarTxt {
         }
 
     }
-    public static void main(String[] args) {
-        List<Encomenda> lista = new ArrayList<>();
-        lista.add(new Encomenda("1234567890123", "Encomenda 1"));
-        lista.add(new Encomenda("1234567890124", "Encomenda 2"));
-        lista.add(new Encomenda("1234567890125", "Encomenda 3"));
-        lista.add(new Encomenda("1234567890126", "Encomenda 4"));
-        lista.add(new Encomenda("1234567890127", "Encomenda 5"));
-        lista.add(new Encomenda("1234567890128", "Encomenda 6"));
-        lista.add(new Encomenda("1234567890129", "Encomenda 7"));
-        lista.add(new Encomenda("1234567890130", "Encomenda 8"));
-        lista.add(new Encomenda("1234567890131", "Encomenda 9"));
-        lista.add(new Encomenda("1234567890132", "Encomenda 10"));
-        lista.add(new Encomenda("1234567890133", "Encomenda 11"));
-        lista.add(new Encomenda("1234567890134", "Encomenda 12"));
-        lista.add(new Encomenda("1234567890135", "Encomenda 13"));
-        lista.add(new Encomenda("1234567890136", "Encomenda 14"));
-        lista.add(new Encomenda("1234567890137", "Encomenda 15"));
-        lista.add(new Encomenda("1234567890138", "Encomenda 16"));
-        lista.add(new Encomenda("1234567890139", "Encomenda 17"));
-        lista.add(new Encomenda("1234567890140", "Encomenda 18"));
-        lista.add(new Encomenda("1234567890141", "Encomenda 19"));
-        lista.add(new Encomenda("1234567890142", "Encomenda 20"));
-        lista.add(new Encomenda("1234567890143", "Encomenda 21"));
-        lista.add(new Encomenda("1234567890144", "Encomenda 22"));
-        lista.add(new Encomenda("1234567890145", "Encomenda 23"));
-
-        System.out.println("Lista original: ");
-        for (Encomenda encomenda : lista) {
-            System.out.println(encomenda);
-        }
-
-        File arquivo = new File("./arquivo.txt");
-        if (!arquivo.isFile()) gravaArquivoTxt(lista, "encomendas.txt");
-        leArquivoTxt("encomendas.txt");
-    }
+//    public static void main(String[] args) {
+//        List<Encomenda> lista = new ArrayList<>();
+//        lista.add(new Encomenda("1234567890123", "Encomenda 1"));
+//        lista.add(new Encomenda("1234567890124", "Encomenda 2"));
+//        lista.add(new Encomenda("1234567890125", "Encomenda 3"));
+//        lista.add(new Encomenda("1234567890126", "Encomenda 4"));
+//        lista.add(new Encomenda("1234567890127", "Encomenda 5"));
+//        lista.add(new Encomenda("1234567890128", "Encomenda 6"));
+//        lista.add(new Encomenda("1234567890129", "Encomenda 7"));
+//        lista.add(new Encomenda("1234567890130", "Encomenda 8"));
+//        lista.add(new Encomenda("1234567890131", "Encomenda 9"));
+//        lista.add(new Encomenda("1234567890132", "Encomenda 10"));
+//        lista.add(new Encomenda("1234567890133", "Encomenda 11"));
+//        lista.add(new Encomenda("1234567890134", "Encomenda 12"));
+//        lista.add(new Encomenda("1234567890135", "Encomenda 13"));
+//        lista.add(new Encomenda("1234567890136", "Encomenda 14"));
+//        lista.add(new Encomenda("1234567890137", "Encomenda 15"));
+//        lista.add(new Encomenda("1234567890138", "Encomenda 16"));
+//        lista.add(new Encomenda("1234567890139", "Encomenda 17"));
+//        lista.add(new Encomenda("1234567890140", "Encomenda 18"));
+//        lista.add(new Encomenda("1234567890141", "Encomenda 19"));
+//        lista.add(new Encomenda("1234567890142", "Encomenda 20"));
+//        lista.add(new Encomenda("1234567890143", "Encomenda 21"));
+//        lista.add(new Encomenda("1234567890144", "Encomenda 22"));
+//        lista.add(new Encomenda("1234567890145", "Encomenda 23"));
+//
+//        System.out.println("Lista original: ");
+//        for (Encomenda encomenda : lista) {
+//            System.out.println(encomenda);
+//        }
+//
+//        File arquivo = new File("./arquivo.txt");
+//        if (!arquivo.isFile()) gravaArquivoTxt(lista, "encomendas.txt");
+//        leArquivoTxt("encomendas.txt");
+//    }
 }
