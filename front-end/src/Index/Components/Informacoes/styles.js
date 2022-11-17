@@ -1,0 +1,80 @@
+import * as React from "react";
+
+const useStyles = () => ({
+  centralizar: {
+    marginTop: "1%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  typography: {
+    paddingLeft: "7%",
+    marginTop: "20%",
+    marginBottom: "5%",
+    fontWeight: "bold",
+    fontSize: "30px",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  textoInfo1: {
+    paddingRight: "8%",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  textoInfo2: {
+    paddingRight: "35%",
+    paddingLeft: "12%",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  textoInfo3: {
+    paddingRight: "40%",
+    paddingLeft: "12%",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  trevo: {},
+  folha1: {
+    width: "250px",
+    height: "250px",
+    position: "absolute",
+    top: "135%",
+    right: "30%",
+    background: "#FF862F",
+    borderRadius: "100px 100px 0px 100px",
+  },
+  folha2: {
+    width: "250px",
+    height: "250px",
+    position: "absolute",
+    top: "135%",
+    right: "9%",
+    background: "#FF862F",
+    borderRadius: "100px 100px 100px 0px",
+  },
+  folha3: {
+    width: "250px",
+    height: "250px",
+    position: "absolute",
+    top: "176.5%",
+    right: "30%",
+    background: "#FF862F",
+    borderRadius: "100px 0px 100px 100px",
+    zIndex: 20,
+  },
+  folha4: {
+    width: "250px",
+    height: "250px",
+    position: "absolute",
+    top: "176.5%",
+    right: "9%",
+    background: "#FF862F",
+    borderRadius: "0px 100px 100px 100px",
+    zIndex: 20,
+  },
+});
+
+export default useStyles;

@@ -7,6 +7,31 @@ import imagem from "../../../../assets/imagemlogin.png";
 
 import useStyles from "./styles";
 
+function Adicionar() {
+  const navigate = useNavigate();
+
+  function Cadastrar(event) {
+    event.preventDefault();
+
+    const novaMusica = {
+      nome: event.target.nome.value,
+      artista: event.target.artista.value,
+      genero: event.target.genero.value,
+      ano: event.target.ano.value,
+      imagem: event.target.imagem.value,
+    };
+    api
+      .post(`/`, novaMusica)
+      .then((res) => {
+        window.alert("Música adicionada");
+        navigate("/musicas");
+      })
+      .catch((error) => {
+        window.alert("Erro ao adicionar nova Música!");
+      });
+  }
+}
+
 function Body() {
   const styles = useStyles();
   return (
