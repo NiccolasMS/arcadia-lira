@@ -7,8 +7,8 @@ function Botao() {
   const styles = useStyles();
 
   return (
-    <Button sx={styles.botao} size="large" variant="contained">
-      Entrar
+    <Button sx={styles.botao} type="submit" size="large" variant="contained">
+      Criar minha conta
     </Button>
   );
 }

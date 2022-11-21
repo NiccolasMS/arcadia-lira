@@ -1,6 +1,22 @@
 import * as React from "react";
 
 const useStyles = () => ({
+  botao: {
+    marginTop: "10px",
+    marginBottom: "6%",
+    fontFamily: "'Montserrat', sans-serif",
+    fontWeight: "bold",
+    color: "black",
+    backgroundColor: "#FF862F",
+    width: "500px",
+    "&:hover": {
+      fontFamily: "'Montserrat', sans-serif",
+      backgroundColor: "#FF862F",
+      color: "black",
+      fontWeight: "bolder",
+    },
+  },
+
   centralizar: {
     marginTop: "1%",
     display: "flex",
@@ -36,8 +52,8 @@ const useStyles = () => ({
   },
   TextField: {
     borderRadius: "5px",
-    marginBottom: "2%",
-    marginTop: "2%",
+    marginBottom: "1%",
+    marginTop: "1%",
     backgroundColor: "white",
     width: "500px",
     "& label.Mui-focused": {

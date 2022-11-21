@@ -8,14 +8,18 @@ function Botao() {
   const styles = useStyles();
   const navigate = useNavigate();
 
-  const handleInicio = () => {
-    navigate(-1);
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleCadastro = () => {
+    navigate("/cadastro");
   };
 
   return (
     <Box sx={styles.margem}>
       <Button
-        onClick={handleInicio}
+        onClick={handleLogin}
         sx={styles.botaoLogin}
         size="medium"
         variant="contained"
@@ -23,7 +27,7 @@ function Botao() {
         Login
       </Button>
       <Button
-        onClick={handleInicio}
+        onClick={handleCadastro}
         sx={styles.botaoCadastro}
         size="medium"
         variant="contained"
