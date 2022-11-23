@@ -122,7 +122,8 @@ public class GerarTxt {
                     contaRegDadosLido++;
 
                     //Instancia um objeto Aluno com as informações lidas
-                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, status);
+                    //Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, status);
+                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao);
 
                     //No Projeto de PI, pode fazer
                     //repository.save(aluno);

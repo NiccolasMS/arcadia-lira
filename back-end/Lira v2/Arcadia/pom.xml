@@ -61,7 +61,6 @@
 		</dependency>
 
 		<!--Email-->
-
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>

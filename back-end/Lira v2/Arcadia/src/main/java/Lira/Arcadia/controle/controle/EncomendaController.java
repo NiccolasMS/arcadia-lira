@@ -25,6 +25,23 @@ public class EncomendaController {
 
     private List<Encomenda> encomendas = new ArrayList<>();
 
+    @PostMapping("/cadastrarEncomenda/{codRastreio}/{desc}")
+    public ResponseEntity<Object> cadastrarEncomenda2(@PathVariable String codRastreio, @PathVariable String desc){
+        if (repository.findAll().contains(codRastreio)){
+            return ResponseEntity.status(400).body("Encomenda já cadastrada!");
+        }
+        Encomenda encomenda = new Encomenda(codRastreio,desc);
+        encomenda.setTopo();
+        encomenda.push("Entregue");
+        encomenda.push("Chegando");
+        encomenda.push("Transportando");
+        encomenda.push("Empacotando");
+        encomenda.setStatus();
+
+        encomendas.add(encomenda);
+        repository.save(encomenda);
+        return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!");
+    }
     @PostMapping
     public ResponseEntity<Object> cadastrarEncomenda(@RequestBody Encomenda encomenda){
         if (repository.findAll().contains(encomenda)){
