@@ -1,9 +1,11 @@
 package Lira.Arcadia.controle.controle;
 
 import Lira.Arcadia.controle.dominio.Encomenda;
+import Lira.Arcadia.controle.dominio.Morador;
 import Lira.Arcadia.controle.repositorio.EncomendaRepository;
 import Lira.Arcadia.controle.utils.Fila;
 import Lira.Arcadia.controle.utils.GerarCsv;
+import Lira.Arcadia.controle.utils.GerarTxt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -109,7 +111,15 @@ public class EncomendaController {
     {
         List<Encomenda> encomendas = repository.findAll();
         GerarCsv.gerarCsvEncomenda(encomendas, "encomendas.csv");
-        return ResponseEntity.status(200).body("Arquivo gerado com sucesso!");
+        return ResponseEntity.status(200).body("Arquivo CSV gerado com sucesso!");
+    }
+
+    @GetMapping("/gerarTxt")
+    public ResponseEntity gerarTxt()
+    {
+        List<Encomenda> encomendas = repository.findAll();
+        GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
+        return ResponseEntity.status(200).body("Arquivo TXT gerado com sucesso!");
     }
 
     @PutMapping("/data-chegada/{id}")
