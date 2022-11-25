@@ -130,7 +130,7 @@ public class UsuarioController {
                 return ResponseEntity.status(404).build();
     }
 
-    @GetMapping("/loginMorador/{email}/{senha}")
+    @PostMapping("/loginMorador/{email}/{senha}")
     public ResponseEntity<Object> loginMorador(@PathVariable String email, @PathVariable String senha){
         Morador usuario = moradorRepository.findByEmail(email);
 
@@ -145,7 +145,7 @@ public class UsuarioController {
         }
         return ResponseEntity.status(404).body("Usuário não encontrado");
     }
-    @GetMapping("/loginPorteiro/{email}/{senha}")
+    @PostMapping("/loginPorteiro/{email}/{senha}")
     public ResponseEntity<Object> loginPorteiro(@PathVariable String email, @PathVariable String senha) {
         Porteiro usuario = porteiroRepository.findByEmail(email);
         if (usuario != null) {

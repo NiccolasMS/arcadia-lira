@@ -29,7 +29,7 @@ function Body() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       api
-        .post(`/loginMorador/${values.email}/${values.senha}`)
+        .post(`/usuarios/loginMorador/${values.email}/${values.senha}`)
         .then((res) => {
           alert("Login realizado com sucesso!");
         })
