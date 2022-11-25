@@ -145,6 +145,22 @@ public class UsuarioController {
         }
         return ResponseEntity.status(404).body("Usuário não encontrado");
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginUsuario(@RequestBody Morador morador){
+        Morador usuario = moradorRepository.findByEmail(morador.getEmail());
+        if (usuario != null) {
+            if (usuario.senha().equals(morador.senha())) {
+                usuario.setAutenticado(true);
+                moradorRepository.save(usuario);
+                return ResponseEntity.status(200).body("Login realizado com sucesso!");
+            }else {
+                return ResponseEntity.status(401).body("Usuário e/ou senha incorretos!");
+            }
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
+
     @PostMapping("/loginPorteiro/{email}/{senha}")
     public ResponseEntity<Object> loginPorteiro(@PathVariable String email, @PathVariable String senha) {
         Porteiro usuario = porteiroRepository.findByEmail(email);

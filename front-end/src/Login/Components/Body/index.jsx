@@ -7,13 +7,14 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import imagem from "../../../../assets/imagemlogin.png";
 import api from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 
 import useStyles from "./styles";
 
 const validationSchema = yup.object({
   email: yup
     .string("Insira seu email")
-    .email("Verifique se o email está escrito conforme o padrão!")
+    .email("Insira seu email")
     .required("Emai é obrigatório"),
   senha: yup.string("Insira sua senha").required("Senha é obrigatória"),
 });
@@ -29,7 +30,10 @@ function Body() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       api
-        .post(`/usuarios/loginMorador/${values.email}/${values.senha}`)
+        .post("/usuarios/login", {
+          email: values.email,
+          senha: values.senha,
+        })
         .then((res) => {
           alert("Login realizado com sucesso!");
         })
@@ -41,62 +45,64 @@ function Body() {
   });
 
   return (
-    <Grid container>
-      <Grid item sm={12} md={6}>
-        <Box sx={styles.bola} />
-        <Box component="img" src={imagem} sx={styles.imagem} />
+    <form onSubmit={formik.handleSubmit}>
+      <Grid container>
+        <Grid item sm={12} md={6}>
+          <Box sx={styles.bola} />
+          <Box component="img" src={imagem} sx={styles.imagem} />
+        </Grid>
+        <Grid item sm={12} md={6} sx={styles.centralizar}>
+          <Grid sx={styles.h1} item md={12}>
+            <Typography sx={styles.typography} variant="h5">
+              Seja bem-vindo
+            </Typography>
+          </Grid>
+          <Grid item md={12}>
+            <TextField
+              sx={styles.TextField}
+              label="Email"
+              id="email"
+              name="email"
+              variant="outlined"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+            />
+          </Grid>
+          <Grid item md={12}>
+            <TextField
+              sx={styles.TextField}
+              label="Senha"
+              id="senha"
+              name="senha"
+              type="password"
+              value={formik.values.senha}
+              onChange={formik.handleChange}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item md={12}>
+            <Button
+              sx={styles.botao}
+              type="submit"
+              size="large"
+              variant="contained"
+            >
+              Entrar
+            </Button>
+          </Grid>
+          <Grid item md={12}>
+            <Typography sx={styles.typography}>
+              Não possui conta? <a href="/cadastro">Cadastre-se</a>
+            </Typography>
+          </Grid>
+          <Grid item md={12}>
+            <Typography sx={styles.typography}>
+              <a href="">Esqueceu a senha?</a>
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid item sm={12} md={6} sx={styles.centralizar}>
-        <Grid sx={styles.h1} item md={12}>
-          <Typography sx={styles.typography} variant="h5">
-            Seja bem-vindo
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <TextField
-            sx={styles.TextField}
-            label="Email"
-            id="email"
-            name="email"
-            variant="outlined"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-          />
-        </Grid>
-        <Grid item md={12}>
-          <TextField
-            sx={styles.TextField}
-            label="Senha"
-            id="senha"
-            name="senha"
-            type="password"
-            value={formik.values.senha}
-            onChange={formik.handleChange}
-            variant="outlined"
-          />
-        </Grid>
-        <Grid item md={12}>
-          <Button
-            sx={styles.botao}
-            type="submit"
-            size="large"
-            variant="contained"
-          >
-            Entrar
-          </Button>
-        </Grid>
-        <Grid item md={12}>
-          <Typography sx={styles.typography}>
-            Não possui conta? <a href="/cadastro">Cadastre-se</a>
-          </Typography>
-        </Grid>
-        <Grid item md={12}>
-          <Typography sx={styles.typography}>
-            <a href="">Esqueceu a senha?</a>
-          </Typography>
-        </Grid>
-      </Grid>
-    </Grid>
+    </form>
   );
 }
 
