@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import imagem from "../../../../assets/imagemlogin.png";
 import api from "../../../services/api";
-import { useNavigate } from "react-router-dom";
 
 import useStyles from "./styles";
 

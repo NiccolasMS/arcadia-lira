@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@mui/material/Button";
 import api from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 
 import useStyles from "./styles";
 
@@ -26,6 +27,7 @@ const validationSchema = yup.object({
 });
 
 function Body() {
+  const navigate = useNavigate();
   const styles = useStyles();
 
   const formik = useFormik({
@@ -48,6 +50,7 @@ function Body() {
         })
         .then((res) => {
           alert("Cadastro realizado com sucesso!");
+          navigate("/login");
         })
         .catch((erro) => {
           alert("Erro ao realizar o Cadastro");
