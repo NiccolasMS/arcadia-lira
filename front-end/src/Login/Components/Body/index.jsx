@@ -1,39 +1,45 @@
-import React from "react";
+import { React, ReactDOM } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Box, Typography } from "@mui/material";
-import Botao from "./Botao/index";
+import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import imagem from "../../../../assets/imagemlogin.png";
+import api from "../../../services/api";
 
 import useStyles from "./styles";
 
-function Adicionar() {
-  const navigate = useNavigate();
-
-  function Cadastrar(event) {
-    event.preventDefault();
-
-    const novaMusica = {
-      nome: event.target.nome.value,
-      artista: event.target.artista.value,
-      genero: event.target.genero.value,
-      ano: event.target.ano.value,
-      imagem: event.target.imagem.value,
-    };
-    api
-      .post(`/`, novaMusica)
-      .then((res) => {
-        window.alert("Música adicionada");
-        navigate("/musicas");
-      })
-      .catch((error) => {
-        window.alert("Erro ao adicionar nova Música!");
-      });
-  }
-}
+const validationSchema = yup.object({
+  email: yup
+    .string("Insira seu email")
+    .email("Verifique se o email está escrito conforme o padrão!")
+    .required("Emai é obrigatório"),
+  senha: yup.string("Insira sua senha").required("Senha é obrigatória"),
+});
 
 function Body() {
   const styles = useStyles();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      senha: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      api
+        .post(`/loginMorador/${values.email}/${values.senha}`)
+        .then((res) => {
+          alert("Login realizado com sucesso!");
+        })
+        .catch((erro) => {
+          alert("Erro ao realizar o Login");
+          console.log(erro);
+        });
+    },
+  });
+
   return (
     <Grid container>
       <Grid item sm={12} md={6}>
@@ -47,13 +53,37 @@ function Body() {
           </Typography>
         </Grid>
         <Grid item md={12}>
-          <TextField sx={styles.TextField} label="Email" variant="outlined" />
+          <TextField
+            sx={styles.TextField}
+            label="Email"
+            id="email"
+            name="email"
+            variant="outlined"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
         </Grid>
         <Grid item md={12}>
-          <TextField sx={styles.TextField} label="Senha" variant="outlined" />
+          <TextField
+            sx={styles.TextField}
+            label="Senha"
+            id="senha"
+            name="senha"
+            type="password"
+            value={formik.values.senha}
+            onChange={formik.handleChange}
+            variant="outlined"
+          />
         </Grid>
         <Grid item md={12}>
-          <Botao />
+          <Button
+            sx={styles.botao}
+            type="submit"
+            size="large"
+            variant="contained"
+          >
+            Entrar
+          </Button>
         </Grid>
         <Grid item md={12}>
           <Typography sx={styles.typography}>

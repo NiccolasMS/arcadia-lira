@@ -38,13 +38,21 @@ function Body() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      api.post("/usuarios/cadastrarMorador", {
-        nome: values.usuario,
-        email: values.email,
-        senha: values.senha,
-        telefone: values.telefone,
-        bloco: values.bloco,
-      });
+      api
+        .post("/usuarios/cadastrarMorador", {
+          nome: values.usuario,
+          email: values.email,
+          senha: values.senha,
+          telefone: values.telefone,
+          bloco: values.bloco,
+        })
+        .then((res) => {
+          alert("Cadastro realizado com sucesso!");
+        })
+        .catch((erro) => {
+          alert("Erro ao realizar o Cadastro");
+          console.log(erro);
+        });
     },
   });
 
