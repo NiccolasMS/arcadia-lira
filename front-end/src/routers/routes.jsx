@@ -4,6 +4,7 @@ import Login from "../Login/index";
 import Cadastro from "../Cadastro/index";
 import Index from "../Index/index";
 import TelaUsuario from "../TelaUsuario";
+import Morador from "../Morador/index";
 
 export default function appRouter() {
   return (
@@ -13,6 +14,7 @@ export default function appRouter() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/tela-usuario" element={<TelaUsuario />} />
+        <Route path="/morador" element={<Morador />} />
       </Routes>
     </Router>
   );
