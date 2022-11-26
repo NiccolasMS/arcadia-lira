@@ -56,7 +56,13 @@ public class Email{
             message.setSubject("Stephanini demissão");
             message.setText("Agradecemos pelo seus serviços, está demitido");
             System.out.println("Pronto para enviar...");
-            Transport.send(message);
+
+            Transport tr = session.getTransport("smtp");
+            tr.connect(usuario,senha);
+            message.saveChanges();
+            tr.sendMessage(message, message.getAllRecipients());
+            //Transport.send(message);
+            tr.close();
         }catch (Exception e)
         {
             System.out.println("Deu erro dentro do try");
