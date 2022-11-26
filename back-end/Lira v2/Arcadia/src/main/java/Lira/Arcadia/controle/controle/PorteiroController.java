@@ -28,5 +28,4 @@ public class PorteiroController {
         return ResponseEntity.status(401).build();
     }
 
-
 }

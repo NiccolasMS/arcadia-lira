@@ -34,6 +34,13 @@ public class UsuarioController {
                     return ResponseEntity.status(400).body("Morador já cadastrado com esse email!");
                 }
             }
+            if(newUsuario.getNome() == "" || newUsuario.getNome() == null)
+            {
+                return ResponseEntity.status(400).body("Campo nome não pode ficar vazio");
+            } else if (newUsuario.getNome().length() < 3) {
+                return ResponseEntity.status(400).body("Campo nome deve ter mais 3 de caracteres");
+            }
+
             moradorRepository.save(newUsuario);
             //201 CREATED, geralmente utilizada com post
             return ResponseEntity.status(201).body("Morador cadastrado com sucesso!\n"  + newUsuario);
@@ -47,7 +54,36 @@ public class UsuarioController {
                     return ResponseEntity.status(400).body("Porteiro já cadastrado com esse email!");
                 }
             }
-            porteiroRepository.save(newUsuario);
+
+            if(newUsuario.getNome() == "" || newUsuario.getNome() == null)
+            {
+                    return ResponseEntity.status(400).body("Campo nome não pode ficar vazio");
+            } else if (newUsuario.getNome().length() < 3) {
+                    return ResponseEntity.status(400).body("Campo nome deve ter mais 3 de caracteres");
+            }
+
+            Boolean hotmail = newUsuario.getEmail().contains("@hotmail.com");
+            Boolean gmail = newUsuario.getEmail().contains("@gmail.com");
+            if(!hotmail && !gmail)
+            {
+                return ResponseEntity.status(400).body("Domínios válidos @hotmail.com ou @gmail.com");
+            }
+
+            if(newUsuario.getTelefone().length() < 15)
+            {
+                return ResponseEntity.status(400).body("Telefone deve seguir o padrão (11) 12345-6789");
+            }
+
+        if (newUsuario.senha().length() < 3) {
+            return ResponseEntity.status(400).body("Campo senha deve ter mais 3 de caracteres");
+        }
+
+        if(newUsuario.getCondominio() == null)
+        {
+            return ResponseEntity.status(400).body("Informe o id do condomínio deste porteiro");
+        }
+
+        porteiroRepository.save(newUsuario);
             //201 CREATED, geralmente utilizada com post
             return ResponseEntity.status(201).body("Porteiro cadastrado com sucesso!\n"  + newUsuario);
     }
