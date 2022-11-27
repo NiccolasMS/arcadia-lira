@@ -11,9 +11,10 @@ const useStyles = () => ({
     flexDirection: "column",
   },
   centralizar2: {
-    marginTop: "2%",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: "2%",
   },
   centralizarContent: {
     display: "flex",
@@ -30,12 +31,6 @@ const useStyles = () => ({
     fontFamily: "'Montserrat', sans-serif",
   },
   typography2:{
-    fontFamily: "'Montserrat', sans-serif",
-    marginTop: "4%",
-    marginLeft: "8%",
-    width: "100%",
-  },
-  typographyContent:{
     fontFamily: "'Montserrat', sans-serif",
     width: "100%",
   },

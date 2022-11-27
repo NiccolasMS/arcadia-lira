@@ -20,7 +20,7 @@ function BodyRight() {
                 />
                 <Box sx={styles.circle}></Box>
                 <Typography sx={styles.typography2} variant="h5">
-                    Maria
+                    Nome do Condominio
                 </Typography>
                 <Grid item md={12}>
                     <Button

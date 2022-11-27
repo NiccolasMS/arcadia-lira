@@ -14,18 +14,21 @@ function BodyUp() {
     const styles = useStyles();
     return (
         <>
+
             <Grid sx={styles.align}>
                 <Grid sx={styles.container2}>
                     <Grid sx={styles.container}>
                         <Grid item sm={12} md={6} sx={styles.centralizar2}>
-                            <Grid sx={styles.h1} item md={12}>
-                                <Typography sx={styles.typography2} variant="h5">
-                                    Insira o código da compra aqui:
-                                </Typography>
+                            <Grid sx={styles.alignicon}>
+                                <Box
+                                    component="img"
+                                    src={imgBox}
+                                    height="35px"
+                                />
                             </Grid>
                             <Grid sx={styles.h1} item md={12}>
                                 <Typography sx={styles.typography2} variant="h5">
-                                    Nome do pedido:
+                                    Insira o código da encomenda aqui:
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -33,18 +36,9 @@ function BodyUp() {
                             <Grid item md={12}>
                                 <TextField
                                     sx={styles.TextField}
-                                    label="Codigo"
+                                    label="Buscar pelo código"
                                     id="codigo"
                                     name="codigo"
-                                    variant="outlined"
-                                />
-                            </Grid>
-                            <Grid item md={12}>
-                                <TextField
-                                    sx={styles.TextField}
-                                    label="Nome do Pedido"
-                                    id="nomePedido"
-                                    name="nomePedido"
                                     variant="outlined"
                                 />
                             </Grid>
@@ -54,7 +48,7 @@ function BodyUp() {
                                     type="submit"
                                     variant="contained"
                                 >
-                                    Inserir Produto
+                                    BUSCAR
                                 </Button>
                             </Grid>
                         </Grid>
@@ -69,24 +63,8 @@ function BodyUp() {
                                 />
                             </Grid>
                             <Grid sx={styles.h1} item md={12}>
-                                <Typography sx={styles.typographyContent} variant="h5">
-                                    Encomendas Pendentes:
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid sx={styles.container}>
-                        <Grid item sm={12} md={6} sx={styles.centralizarContent}>
-                            <Grid sx={styles.alignicon}>
-                                <Box
-                                    component="img"
-                                    src={imgBox}
-                                    height="35px"
-                                />
-                            </Grid>
-                            <Grid sx={styles.h1} item md={12}>
-                                <Typography sx={styles.typographyContent} variant="h5">
-                                    Encomendas Realizadas:
+                                <Typography sx={styles.typography2} variant="h5">
+                                    Encomendas
                                 </Typography>
                             </Grid>
                         </Grid>
