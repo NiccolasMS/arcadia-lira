@@ -29,6 +29,16 @@ public class EncomendaController {
         if (repository.findAll().contains(encomenda)){
             return ResponseEntity.status(400).body("Encomenda já cadastrada!");
         }
+
+        if(encomenda.getCodigoDeRastreio().equals("") || encomenda.getCodigoDeRastreio() == null )
+        {
+            return ResponseEntity.status(400).body("Preencha o campo código de rastreio");
+        } else if (encomenda.getCodigoDeRastreio().length() <= 4) {
+            return ResponseEntity.status(400).body("Código de rastreio deve ter mais de 4 caracteres");
+        } else if (encomenda.getCodigoDeRastreio().length() >= 16) {
+            return ResponseEntity.status(400).body("Código de rastreio deve ter no máximo 15 caracteres");
+        }
+
         encomenda.setTopo();
         encomenda.push("Entregue");
         encomenda.push("Chegando");
@@ -37,6 +47,8 @@ public class EncomendaController {
         encomenda.setStatus();
 
         encomendas.add(encomenda);
+        fila.insert(encomenda);
+        
         repository.save(encomenda);
         return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!");
     }

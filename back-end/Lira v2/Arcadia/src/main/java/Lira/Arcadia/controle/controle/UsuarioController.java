@@ -41,6 +41,34 @@ public class UsuarioController {
                 return ResponseEntity.status(400).body("Campo nome deve ter mais 3 de caracteres");
             }
 
+            Boolean hotmail = newUsuario.getEmail().contains("@hotmail.com");
+            Boolean gmail = newUsuario.getEmail().contains("@outlook.com");
+            if(!hotmail && !gmail)
+            {
+                return ResponseEntity.status(400).body("Domínios válidos @hotmail.com ou @outlook.com");
+            }
+
+            if(newUsuario.getTelefone().length() < 15)
+            {
+                return ResponseEntity.status(400).body("Telefone deve seguir o padrão (11) 12345-6789");
+            }
+
+            if(newUsuario.senha().equals("")|| newUsuario.senha() == null)
+            {
+                return ResponseEntity.status(400).body("Preencha o campo senha");
+            }
+
+            if(newUsuario.getBloco() == "" || newUsuario.getBloco() == null)
+            {
+                return ResponseEntity.status(400).body("Preencha o campo bloco");
+            }
+
+
+        if (newUsuario.senha().length() < 3) {
+            return ResponseEntity.status(400).body("Campo senha deve ter no mínimo 3 caracteres");
+        }
+
+
             moradorRepository.save(newUsuario);
             //201 CREATED, geralmente utilizada com post
             return ResponseEntity.status(201).body("Morador cadastrado com sucesso!\n"  + newUsuario);
@@ -59,14 +87,14 @@ public class UsuarioController {
             {
                     return ResponseEntity.status(400).body("Campo nome não pode ficar vazio");
             } else if (newUsuario.getNome().length() < 3) {
-                    return ResponseEntity.status(400).body("Campo nome deve ter mais 3 de caracteres");
+                    return ResponseEntity.status(400).body("Campo nome deve ter no mínimo 3 caracteres");
             }
 
             Boolean hotmail = newUsuario.getEmail().contains("@hotmail.com");
-            Boolean gmail = newUsuario.getEmail().contains("@gmail.com");
+            Boolean gmail = newUsuario.getEmail().contains("@outlook.com");
             if(!hotmail && !gmail)
             {
-                return ResponseEntity.status(400).body("Domínios válidos @hotmail.com ou @gmail.com");
+                return ResponseEntity.status(400).body("Domínios válidos @hotmail.com ou @outlook.com");
             }
 
             if(newUsuario.getTelefone().length() < 15)
@@ -74,13 +102,13 @@ public class UsuarioController {
                 return ResponseEntity.status(400).body("Telefone deve seguir o padrão (11) 12345-6789");
             }
 
-        if (newUsuario.senha().length() < 3) {
-            return ResponseEntity.status(400).body("Campo senha deve ter mais 3 de caracteres");
+        if(newUsuario.senha().equals("")|| newUsuario.senha() == null)
+        {
+            return ResponseEntity.status(400).body("Preencha o campo senha");
         }
 
-        if(newUsuario.getCondominio() == null)
-        {
-            return ResponseEntity.status(400).body("Informe o id do condomínio deste porteiro");
+        if (newUsuario.senha().length() < 3) {
+            return ResponseEntity.status(400).body("Campo senha deve ter no mínimo 3 caracteres");
         }
 
         porteiroRepository.save(newUsuario);
