@@ -151,19 +151,6 @@ public class EncomendaController {
         return ResponseEntity.status(404).build();
     }
 
-//    @GetMapping("/gerarTxt/{id}")
-//    public ResponseEntity<Object> gerarTxt(@PathVariable int id)
-//    {
-//        for (Morador morador : moradorRepository.findAll()){
-//            if (morador.getId() == id){
-//                List<Encomenda> encomendas = repository.findAll();
-//                GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
-//                return ResponseEntity.status(200).body("Arquivo TXT gerado com sucesso!");
-//            }
-//        }
-//        return ResponseEntity.status(404).body("Morador não encontrado!");
-//    }
-
     @PutMapping("/data-chegada/{id}")
     public ResponseEntity putDataChegada(@PathVariable int id)
     {
