@@ -113,6 +113,15 @@ const useStyles = () => ({
     marginBottom: "3%",
     marginRight: "10px",
     marginLeft: "15px",
+  },
+  alignicon2:{
+    textAlign: "center",
+    marginTop: "1.5%",
+    marginRight: "10px",
+    marginLeft: "15px",
+  },
+  encomendas:{
+    marginRight: "20%",
   }
 });
 

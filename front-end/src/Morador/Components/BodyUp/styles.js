@@ -99,9 +99,6 @@ const useStyles = () => ({
     },
   },
   container:{
-    
-    maxHeight: "457px",
-    overflowX: "hidden",
     display: "flex",
     border: "2px solid #00A089",
     borderTopColor: "#FFFFFF",
