@@ -5,8 +5,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class Email {
-    public static void main(String[] args) {
+public class EnvioEmail {
+
+    public void EnviarEmail(String destinatario)
+    {
         String usuario = "bruno.calmeida@bandtec.com.br";
         String senha = "Pazesossego123";
 
@@ -48,26 +50,23 @@ public class Email {
 
             Address[] toUser = InternetAddress.parse("bruno.calmeida@bandtec.com.br");
             System.out.println("Criando conteudo da mensagem");
-            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("brunoo_henriquee_chagas@hotmail.com"));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(destinatario));
             message.setSubject("Portaria");
             message.setText("Sua entrega está aguardando na portaria!");
             System.out.println("Pronto para enviar...");
 
             Transport tr = session.getTransport("smtp");
             tr.connect(usuario,senha);
-            System.out.println("Conectado");
             message.saveChanges();
-            System.out.println("Mudanças salvas");
             tr.sendMessage(message, message.getAllRecipients());
-            //Transport.send(message,"bruno.calmeida@bandtec.com.br","Pazesossego123");
-            System.out.println("Email enviado");
-            // tr.close();
+            //Transport.send(message);
+            tr.close();
         }catch (Exception e)
         {
             System.out.println("Deu erro dentro do try");
             System.out.println(e);
         }
 
-
     }
+
 }
