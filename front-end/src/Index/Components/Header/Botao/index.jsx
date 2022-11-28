@@ -12,10 +12,6 @@ function Botao() {
     navigate("/login");
   };
 
-  const handleCadastro = () => {
-    navigate("/cadastro");
-  };
-
   return (
     <Box sx={styles.margem}>
       <Button
@@ -25,14 +21,6 @@ function Botao() {
         variant="contained"
       >
         Login
-      </Button>
-      <Button
-        onClick={handleCadastro}
-        sx={styles.botaoCadastro}
-        size="medium"
-        variant="contained"
-      >
-        Cadastro
       </Button>
     </Box>
   );

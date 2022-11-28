@@ -11,7 +11,7 @@ const useStyles = () => ({
     flexDirection: "column",
   },
   espacamento: {
-    marginBottom: "5%",
+    marginBottom: "2%",
   },
   distancia:{
     marginTop: "10%",

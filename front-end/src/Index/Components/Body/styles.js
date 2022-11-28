@@ -12,7 +12,6 @@ const useStyles = () => ({
     height: "200px",
     marginTop: "8%",
     display: "flex",
-    alignItems: "center",
     marginLeft: "15%",
     justifyContent: "center",
     flexDirection: "column",
@@ -27,6 +26,36 @@ const useStyles = () => ({
     justifyContent: "center",
     flexDirection: "column",
   },
+  textField: {
+    color: "black",
+    borderRadius: "5px",
+    fontFamily: "'Montserrat', sans-serif",
+    marginTop: "2%",
+    marginLeft: "12%",
+    backgroundColor: "white",
+    width: "300px",
+    "& label.Mui-focused": {
+      color: "#00A089",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#00A089",
+      color: "black",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#00A089",
+        color: "black",
+      },
+      "&:hover fieldset": {
+        borderColor: "#00A089",
+        color: "black",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#00A089",
+        color: "black",
+      },
+    },
+  },  
   h1: {
     marginBottom: "4%",
   },
@@ -45,6 +74,12 @@ const useStyles = () => ({
     paddingLeft: "15%",
     fontWeight: "bold",
     fontSize: "40px",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  typography2: {
+    marginLeft: "10%",
+    fontWeight: "bold",
+    fontSize: "20px",
     fontFamily: "'Montserrat', sans-serif",
   },
   typographyBarra: {
@@ -77,10 +112,10 @@ const useStyles = () => ({
   imagem: {
     boxSizing: "border-box",
     position: "absolute",
-    width: "330px",
-    height: "330px",
-    marginLeft: "800px",
-    marginTop: "-80px",
+    width: "500px",
+    height: "500px",
+    marginLeft: "720px",
+    marginTop: "-120px",
     zIndex: 1,
   },
   imagemBarra: {
@@ -91,11 +126,12 @@ const useStyles = () => ({
     marginTop: "-190px",
   },
   TextField: {
+    marginLeft: "10%",
     borderRadius: "5px",
     marginBottom: "2%",
     marginTop: "2%",
     backgroundColor: "white",
-    width: "500px",
+    width: "252px",
     "& label.Mui-focused": {
       color: "#FF862F",
     },
@@ -114,6 +150,23 @@ const useStyles = () => ({
       },
     },
   },
+  botao: {
+    marginTop: "10px",
+    marginBottom: "6%",
+    fontFamily: "'Montserrat', sans-serif",
+    fontWeight: "bold",
+    color: "black",
+    marginLeft: "5%",
+    height: "58px",
+    backgroundColor: "#FF862F",
+    width: "160px",
+    "&:hover": {
+        fontFamily: "'Montserrat', sans-serif",
+        backgroundColor: "#FF862F",
+        color: "white",
+        fontWeight: "bolder",
+    },
+},
 });
 
 export default useStyles;

@@ -9,6 +9,7 @@ import imagem from "../../../../assets/imagemlogin.png";
 import api from "../../../services/api";
 
 import useStyles from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup.object({
   email: yup
@@ -20,6 +21,7 @@ const validationSchema = yup.object({
 
 function Body() {
   const styles = useStyles();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -35,6 +37,7 @@ function Body() {
         })
         .then((res) => {
           alert("Login realizado com sucesso!");
+          navigate("/morador");
         })
         .catch((erro) => {
           alert("Erro ao realizar o Login");
@@ -88,11 +91,6 @@ function Body() {
             >
               Entrar
             </Button>
-          </Grid>
-          <Grid item md={12}>
-            <Typography sx={styles.typography}>
-              Não possui conta? <a href="/cadastro">Cadastre-se</a>
-            </Typography>
           </Grid>
         </Grid>
       </Grid>

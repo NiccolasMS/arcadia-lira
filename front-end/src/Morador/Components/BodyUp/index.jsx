@@ -124,6 +124,7 @@ function BodyUp() {
                       descricao={encomendas.descricao}
                       codigoDeRastreio={encomendas.codigoDeRastreio}
                       id={encomendas.id}
+                      status={encomendas.status}
                     />
                   ))}
                 </Grid>

@@ -9,7 +9,6 @@ import ItemEncomendaTeste from "../../../Porteiro/Components/BodyUp/components/i
 
 import useStyles from "./styles";
 import BodyRight from "../BodyRight";
-// import { Container } from './styles';
 
 function BodyUp() {
   const styles = useStyles();

@@ -8,12 +8,17 @@ const useStyles = () => ({
   typography: {
     fontFamily: "'Montserrat', sans-serif",
   },
+  espacamento: {
+    marginBottom: "2%",
+  },
   typography2:{
     fontFamily: "'Montserrat', sans-serif",
     width: "100%",
     textAlign: "center",
     marginBottom: "65%",  },
   container:{
+    marginLeft: "71%",
+    position: "fixed",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

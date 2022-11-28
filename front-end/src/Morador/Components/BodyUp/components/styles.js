@@ -2,16 +2,21 @@ import * as React from "react";
 
 const useStyles = () => ({
   centralizar: {
-    marginBottom: "14%",
+    marginBottom: "8%",
     marginLeft: "auto",
     marginRight: "3%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    border: "2px solid #00A089",
+    borderTopColor: "#FFFFFF",
+    borderRightColor: "#FFFFFF",
+    borderLeftColor: "#FFFFFF",
+    borderBottomColor: "#FF862F",
   },
   espacamento: {
-    marginBottom: "5%",
+    marginBottom: "2%",
   },
   distancia:{
     marginTop: "10%",
@@ -22,6 +27,7 @@ const useStyles = () => ({
     fontFamily: "'Montserrat', sans-serif",
     marginTop: "2%",
     marginLeft: "12%",
+    marginBottom: "10%",
     backgroundColor: "white",
     width: "300px",
     "& label.Mui-focused": {
@@ -44,6 +50,21 @@ const useStyles = () => ({
         borderColor: "#00A089",
         color: "black",
       },
+    },
+  },
+  botao: {
+    marginTop: "10px",
+    marginBottom: "6%",
+    fontFamily: "'Montserrat', sans-serif",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#00A089",
+    width: "300px",
+    "&:hover": {
+      fontFamily: "'Montserrat', sans-serif",
+      backgroundColor: "#00A089",
+      color: "white",
+      fontWeight: "bolder",
     },
   },
 });

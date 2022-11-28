@@ -14,6 +14,8 @@ const useStyles = () => ({
     textAlign: "center",
     marginBottom: "65%",  },
   container:{
+    marginLeft: "71%",
+    position: "fixed",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

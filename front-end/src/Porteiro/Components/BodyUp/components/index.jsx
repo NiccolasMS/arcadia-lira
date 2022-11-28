@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import useStyles from "./styles";
 
 function ItemEncomendaTeste(props) {
+  const [statusInput, setStatusInput] = useState(props.status);
   const [descricaoInput, setDescricaoInput] = useState(props.descricao);
   const [codigoDeRastreioInput, setCodigoDeRastreioInput] = useState(
     props.codigoDeRastreio
@@ -27,7 +28,7 @@ function ItemEncomendaTeste(props) {
               onChange={(e) => setDescricaoInput(e.target.value)}
             />
           </Grid>
-          <Grid>
+          <Grid sx={styles.espacamento}>
             <TextField
               sx={styles.textField}
               label="Código"
@@ -36,6 +37,17 @@ function ItemEncomendaTeste(props) {
               variant="outlined"
               defaultValue={codigoDeRastreioInput}
               onChange={(e) => setCodigoDeRastreioInput(e.target.value)}
+            />
+          </Grid>
+          <Grid>
+            <TextField
+              sx={styles.textField}
+              label="Status"
+              type="text"
+              disabled
+              variant="outlined"
+              defaultValue={statusInput}
+              onChange={(e) => setStatusInput(e.target.value)}
             />
           </Grid>
         </Box>
