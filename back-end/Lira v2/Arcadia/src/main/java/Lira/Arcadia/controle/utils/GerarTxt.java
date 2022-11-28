@@ -72,6 +72,8 @@ public class GerarTxt {
         BufferedReader entrada = null;
         Morador morador = new Morador();
         Condominio condominio = new Condominio();
+        LocalDateTime dataChegada = LocalDateTime.now();
+        LocalDateTime dataEntrega = LocalDateTime.now();
         String registro, tipoRegistro;
         String codigoDeRastreio, descricao, status;
         int contaRegDadosLido = 0;
@@ -127,14 +129,16 @@ public class GerarTxt {
                     System.out.println("Registro de corpo");
                     codigoDeRastreio = registro.substring(2, 11);
                     descricao = registro.substring(11, 19);
-                    status = registro.substring(19, 30);
-                    taxa = Double.parseDouble(registro.substring(30, 38));
-                    morador.setBloco(registro.substring(38, 41));
-                    condominio.setNome(registro.substring(41, 61));
+                    dataChegada = LocalDateTime.parse(registro.substring(19, 38));
+                    dataEntrega = LocalDateTime.parse(registro.substring(38, 57));
+                    condominio.setNome(registro.substring(57, 77));
+                    morador.setBloco(registro.substring(77, 80));
+                    status = registro.substring(80, 88);
+                    taxa = Double.parseDouble(registro.substring(88, 96));
                     contaRegDadosLido++;
 
                     //Instancia um objeto Aluno com as informações lidas
-                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, status, taxa, morador, condominio);
+                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, dataChegada, dataEntrega, condominio, morador, status, taxa);
 
                     //No Projeto de PI, pode fazer
                     //repository.save(aluno);
