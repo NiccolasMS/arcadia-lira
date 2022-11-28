@@ -1,5 +1,6 @@
 package Lira.Arcadia.controle.utils;
 
+import Lira.Arcadia.controle.dominio.Condominio;
 import Lira.Arcadia.controle.dominio.Encomenda;
 import Lira.Arcadia.controle.dominio.Morador;
 
@@ -36,7 +37,7 @@ public class GerarTxt {
         int contaRegDados = 0;
 
         //Monta o registro de header
-        String header = "ENCOMENDA";
+        String header = "00ENCOMENDA20222";
         header += LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         header += "01";
 
@@ -47,9 +48,14 @@ public class GerarTxt {
         String corpo;
         for (Encomenda encomenda : lista) {
             corpo = "02";
-            corpo += String.format("%-50.50s", encomenda.getDescricao());
-            corpo += String.format("%-13.13s", encomenda.getCodigoDeRastreio());
-            corpo += String.format("%-15.15s", encomenda.getStatus());
+            corpo += String.format("%-8.8s", encomenda.getDescricao());
+            corpo += String.format("%-9.9s", encomenda.getCodigoDeRastreio());
+            corpo += String.format("%-19.19s", encomenda.getDataChegada());
+            corpo += String.format("%-19.19s", encomenda.getDataEntrega());
+            corpo += String.format("%-20.20s", encomenda.getCondominio().getNome());
+            corpo += String.format("%-3.3s", encomenda.getMorador().getBloco());
+            corpo += String.format("%-11.11s", encomenda.getStatus());
+            corpo += String.format("%-8.8s", encomenda.getTaxa());
 //            corpo += String.format("%05.2f", aluno.getMedia());
 //            corpo += String.format("%03d", aluno.getQtdFalta());
             gravaRegistro(corpo, nomeArq);
@@ -64,10 +70,15 @@ public class GerarTxt {
 
     public static void leArquivoTxt(String nomeArq) {
         BufferedReader entrada = null;
+        Morador morador = new Morador();
+        Condominio condominio = new Condominio();
+        LocalDateTime dataChegada = LocalDateTime.now();
+        LocalDateTime dataEntrega = LocalDateTime.now();
         String registro, tipoRegistro;
         String codigoDeRastreio, descricao, status;
         int contaRegDadosLido = 0;
         int qtdRegDadoGravado;
+        double taxa;
 
         List<Encomenda> listaLida = new ArrayList<>();
 
@@ -116,14 +127,18 @@ public class GerarTxt {
                 }
                 else if(tipoRegistro.equals("02")){
                     System.out.println("Registro de corpo");
-                    descricao = registro.substring(2, 52);
-                    codigoDeRastreio = registro.substring(52, 65);
-                    status = registro.substring(65, 80);
+                    codigoDeRastreio = registro.substring(2, 11);
+                    descricao = registro.substring(11, 19);
+                    dataChegada = LocalDateTime.parse(registro.substring(19, 38));
+                    dataEntrega = LocalDateTime.parse(registro.substring(38, 57));
+                    condominio.setNome(registro.substring(57, 77));
+                    morador.setBloco(registro.substring(77, 80));
+                    status = registro.substring(80, 88);
+                    taxa = Double.parseDouble(registro.substring(88, 96));
                     contaRegDadosLido++;
 
                     //Instancia um objeto Aluno com as informações lidas
-                    //Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, status);
-                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao);
+                    Encomenda encomenda = new Encomenda(codigoDeRastreio, descricao, dataChegada, dataEntrega, condominio, morador, status, taxa);
 
                     //No Projeto de PI, pode fazer
                     //repository.save(aluno);

@@ -26,6 +26,14 @@ public class CondominioController {
                 return ResponseEntity.status(400).body("Condomínio já cadastrado com esse nome!");
             }
         }
+
+        if(newCondominio.getNome().equals("") || newCondominio.getNome() == null)
+        {
+            return ResponseEntity.status(400).body("Preencha o campo nome");
+        } else if (newCondominio.getNome().length() < 3) {
+            return ResponseEntity.status(400).body("Preencha o campo nome");
+        }
+
         lista.adiciona(newCondominio);
         repository.save(newCondominio);
         //201 CREATED, geralmente utilizada com post

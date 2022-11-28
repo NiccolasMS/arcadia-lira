@@ -3,6 +3,7 @@ package Lira.Arcadia.controle.controle;
 import Lira.Arcadia.controle.dominio.Encomenda;
 import Lira.Arcadia.controle.dominio.Morador;
 import Lira.Arcadia.controle.repositorio.EncomendaRepository;
+import Lira.Arcadia.controle.repositorio.MoradorRepository;
 import Lira.Arcadia.controle.utils.Fila;
 import Lira.Arcadia.controle.utils.GerarCsv;
 import Lira.Arcadia.controle.utils.GerarTxt;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +26,9 @@ public class EncomendaController {
     Fila fila = new Fila(100);
     @Autowired
     private EncomendaRepository repository;
+
+    @Autowired
+    private MoradorRepository moradorRepository;
 
     private List<Encomenda> encomendas = new ArrayList<>();
 
@@ -47,6 +54,16 @@ public class EncomendaController {
         if (repository.findAll().contains(encomenda)){
             return ResponseEntity.status(400).body("Encomenda já cadastrada!");
         }
+
+        if(encomenda.getCodigoDeRastreio().equals("") || encomenda.getCodigoDeRastreio() == null )
+        {
+            return ResponseEntity.status(400).body("Preencha o campo código de rastreio");
+        } else if (encomenda.getCodigoDeRastreio().length() <= 4) {
+            return ResponseEntity.status(400).body("Código de rastreio deve ter mais de 4 caracteres");
+        } else if (encomenda.getCodigoDeRastreio().length() >= 16) {
+            return ResponseEntity.status(400).body("Código de rastreio deve ter no máximo 15 caracteres");
+        }
+
         encomenda.setTopo();
         encomenda.push("Entregue");
         encomenda.push("Chegando");
@@ -55,6 +72,8 @@ public class EncomendaController {
         encomenda.setStatus();
 
         encomendas.add(encomenda);
+        fila.insert(encomenda);
+        
         repository.save(encomenda);
         return ResponseEntity.status(201).body("Encomenda cadastrada com sucesso!");
     }
@@ -123,20 +142,31 @@ public class EncomendaController {
         return ResponseEntity.status(404).body("Encomenda não encontrada!");
     }
 
-    @GetMapping("/gerarCsv")
-    public ResponseEntity gerarCsv()
-    {
-        List<Encomenda> encomendas = repository.findAll();
-        GerarCsv.gerarCsvEncomenda(encomendas, "encomendas.csv");
-        return ResponseEntity.status(200).body("Arquivo CSV gerado com sucesso!");
+    @GetMapping(value = "/gerarCsv/{id}", produces = "text/csv")
+    public ResponseEntity<byte[]> gerarCsv (@PathVariable int id) throws IOException {
+        for (Morador morador : moradorRepository.findAll()){
+            if (morador.getId() == id){
+                List<Encomenda> encomendas = repository.findAll();
+                GerarCsv.gerarCsvEncomenda(encomendas, "encomendas.csv");
+                File file = new File("encomendas.csv");
+                byte[] bytes = Files.readAllBytes(file.toPath());
+                return ResponseEntity.status(200).header("content-disposition", "attachment; filename=\"encomendas.csv\"").body(bytes);
+            }
+        }
+        return ResponseEntity.status(404).build();
     }
-
-    @GetMapping("/gerarTxt")
-    public ResponseEntity gerarTxt()
-    {
-        List<Encomenda> encomendas = repository.findAll();
-        GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
-        return ResponseEntity.status(200).body("Arquivo TXT gerado com sucesso!");
+    @GetMapping(value = "/gerarTxt/{id}", produces = "text/txt")
+    public ResponseEntity<byte[]> gerarTxt (@PathVariable int id) throws IOException {
+        for (Morador morador : moradorRepository.findAll()){
+            if (morador.getId() == id){
+                List<Encomenda> encomendas = repository.findAll();
+                GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
+                File file = new File("encomendas.txt");
+                byte[] bytes = Files.readAllBytes(file.toPath());
+                return ResponseEntity.status(200).header("content-disposition", "attachment; filename=\"encomendas.txt\"").body(bytes);
+            }
+        }
+        return ResponseEntity.status(404).build();
     }
 
     @PutMapping("/data-chegada/{id}")

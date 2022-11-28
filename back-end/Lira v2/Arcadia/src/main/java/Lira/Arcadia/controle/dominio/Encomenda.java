@@ -55,9 +55,15 @@ public class Encomenda {
         this.condominio = condominio;
     }
 
-    public Encomenda(String codigoDeRastreio, String descricao) {
+    public Encomenda(String codigoDeRastreio, String descricao, LocalDateTime dataChegada, LocalDateTime dataEntrega, Condominio condominio, Morador morador, String status, Double taxa) {
         this.codigoDeRastreio = codigoDeRastreio;
         this.descricao = descricao;
+        this.dataChegada = dataChegada;
+        this.dataEntrega = dataEntrega;
+        this.condominio = condominio;
+        this.morador = morador;
+        this.status = status;
+        this.taxa = taxa;
     }
 
     public String[] pilha() {
