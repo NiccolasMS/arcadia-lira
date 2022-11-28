@@ -10,18 +10,14 @@ import api from "../../../services/api";
 
 import useStyles from "./styles";
 import BodyRight from "../BodyRight";
-// import { Container } from './styles';
 import ItemEncomenda from "./components";
 
 const validationSchema = yup.object({
   codigoDeRastreio: yup
     .string("Insira o código do produto")
-    .max("Código deve conter até 10 caracteres")
-    .min("Código deve conter no mínimo 3 caracteres")
     .required("Código do produto é obrigatório"),
   descricao: yup
     .string("Insira a descrição")
-    .max("Descrição deve conter até 200 caracteres")
     .required("descrição do produto é obrigatória"),
 });
 

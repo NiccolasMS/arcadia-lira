@@ -4,20 +4,14 @@ import Header from "./Components/Header/index";
 import Body from "./Components/Body/index";
 
 import useStyles from "./styles";
-import Informacoes from "./Components/Informacoes";
-import Valores from "./Components/Valores";
 
 function Index() {
   const styles = useStyles();
   return (
-    <>
-      <Box sx={styles.fundo}>
-        <Header />
-        <Body />
-      </Box>
-      <Informacoes />
-      <Valores />
-    </>
+    <Box sx={styles.fundo}>
+      <Header />
+      <Body />
+    </Box>
   );
 }
 

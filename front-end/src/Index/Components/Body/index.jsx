@@ -20,15 +20,15 @@ function Body() {
           <Typography sx={styles.typography} variant="h5">
             Inovação para descomplicar sua gestão
           </Typography>
-          <Box sx={styles.barra}>
-            <Typography sx={styles.typographyBarra} variant="h5">
-              Saiba mais sobre a gente
-            </Typography>
-            <Box component="img" src={imagemBarra} sx={styles.imagemBarra} />
-          </Box>
+        </Grid>
+        <Grid>
+          <Grid sx={styles.centralizar2}>
+            <Grid>
+              <TextField />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item sm={12} md={6} sx={styles.centralizar} />
     </Grid>
   );
 }
