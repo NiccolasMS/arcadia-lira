@@ -55,10 +55,13 @@ public class Encomenda {
         this.condominio = condominio;
     }
 
-    public Encomenda(String codigoDeRastreio, String descricao, String status) {
+    public Encomenda(String codigoDeRastreio, String descricao, String status, Double taxa, Morador morador, Condominio condominio) {
         this.codigoDeRastreio = codigoDeRastreio;
         this.descricao = descricao;
         this.status = status;
+        this.taxa = taxa;
+        this.morador = morador;
+        this.condominio = condominio;
     }
 
     public String[] pilha() {
