@@ -8,6 +8,7 @@ import Lira.Arcadia.controle.repositorio.CondominioRepository;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/condominio")
 public class CondominioController {

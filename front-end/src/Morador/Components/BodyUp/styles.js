@@ -38,6 +38,7 @@ const useStyles = () => ({
   typographyContent:{
     fontFamily: "'Montserrat', sans-serif",
     width: "100%",
+    marginBottom: "8%",
   },
   bola: {
     boxSizing: "border-box",
@@ -98,6 +99,9 @@ const useStyles = () => ({
     },
   },
   container:{
+    
+    maxHeight: "457px",
+    overflowX: "hidden",
     display: "flex",
     border: "2px solid #00A089",
     borderTopColor: "#FFFFFF",
@@ -115,7 +119,6 @@ const useStyles = () => ({
   },
   alignicon:{
     textAlign: "center",
-    marginBottom: "3%",
     marginRight: "10px",
     marginLeft: "15px",
   }

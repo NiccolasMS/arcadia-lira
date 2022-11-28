@@ -14,7 +14,7 @@ const validationSchema = yup.object({
   email: yup
     .string("Insira seu email")
     .email("Insira seu email")
-    .required("Emai é obrigatório"),
+    .required("Email é obrigatório"),
   senha: yup.string("Insira sua senha").required("Senha é obrigatória"),
 });
 
@@ -92,11 +92,6 @@ function Body() {
           <Grid item md={12}>
             <Typography sx={styles.typography}>
               Não possui conta? <a href="/cadastro">Cadastre-se</a>
-            </Typography>
-          </Grid>
-          <Grid item md={12}>
-            <Typography sx={styles.typography}>
-              <a href="">Esqueceu a senha?</a>
             </Typography>
           </Grid>
         </Grid>
