@@ -3,6 +3,8 @@ package Lira.Arcadia.controle.controle;
 import Lira.Arcadia.controle.dominio.Porteiro;
 import Lira.Arcadia.controle.dominio.Usuario;
 import Lira.Arcadia.controle.repositorio.PorteiroRepository;
+//import Lira.Arcadia.controle.utils.EnvioEmail;
+import Lira.Arcadia.controle.utils.EnvioEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +29,15 @@ public class PorteiroController {
         //401 não autorizado
         return ResponseEntity.status(401).build();
     }
+
+    @GetMapping("/enviarEmail/{destinatario}")
+    public ResponseEntity enviarEmail(@PathVariable String destinatario)
+    {
+        EnvioEmail email = new EnvioEmail();
+        email.EnviarEmail(destinatario);
+
+        return ResponseEntity.status(200).body("Email enviado");
+    }
+
 
 }
