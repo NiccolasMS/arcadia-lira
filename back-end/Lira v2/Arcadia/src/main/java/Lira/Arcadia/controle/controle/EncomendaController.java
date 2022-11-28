@@ -137,19 +137,32 @@ public class EncomendaController {
         }
         return ResponseEntity.status(404).build();
     }
-
-    @GetMapping("/gerarTxt/{id}")
-    public ResponseEntity<Object> gerarTxt(@PathVariable int id)
-    {
+    @GetMapping(value = "/gerarTxt/{id}", produces = "text/txt")
+    public ResponseEntity<byte[]> gerarTxt (@PathVariable int id) throws IOException {
         for (Morador morador : moradorRepository.findAll()){
             if (morador.getId() == id){
                 List<Encomenda> encomendas = repository.findAll();
                 GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
-                return ResponseEntity.status(200).body("Arquivo TXT gerado com sucesso!");
+                File file = new File("encomendas.txt");
+                byte[] bytes = Files.readAllBytes(file.toPath());
+                return ResponseEntity.status(200).header("content-disposition", "attachment; filename=\"encomendas.txt\"").body(bytes);
             }
         }
-        return ResponseEntity.status(404).body("Morador não encontrado!");
+        return ResponseEntity.status(404).build();
     }
+
+//    @GetMapping("/gerarTxt/{id}")
+//    public ResponseEntity<Object> gerarTxt(@PathVariable int id)
+//    {
+//        for (Morador morador : moradorRepository.findAll()){
+//            if (morador.getId() == id){
+//                List<Encomenda> encomendas = repository.findAll();
+//                GerarTxt.gravaArquivoTxt(encomendas, "encomendas.txt");
+//                return ResponseEntity.status(200).body("Arquivo TXT gerado com sucesso!");
+//            }
+//        }
+//        return ResponseEntity.status(404).body("Morador não encontrado!");
+//    }
 
     @PutMapping("/data-chegada/{id}")
     public ResponseEntity putDataChegada(@PathVariable int id)
