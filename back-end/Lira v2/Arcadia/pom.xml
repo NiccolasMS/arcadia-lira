@@ -8,6 +8,13 @@
 		<version>2.7.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-resources-plugin</artifactId>
+		<version>3.1.0</version>
+	</plugin>
+
 	<groupId>Lira</groupId>
 	<artifactId>Arcadia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -18,11 +25,15 @@
 	</properties>
 	<dependencies>
 
+
+
 			<dependency>
 				<groupId>com.gtbr</groupId>
 				<artifactId>via-cep</artifactId>
 				<version>1.0.0</version>
 			</dependency>
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
