@@ -9,4 +9,5 @@ public interface EncomendaRepository extends JpaRepository<Encomenda,Integer> {
     Encomenda findByCodigoDeRastreio(String codigoDeRastreio);
     Encomenda findById(int id);
 
+
 }

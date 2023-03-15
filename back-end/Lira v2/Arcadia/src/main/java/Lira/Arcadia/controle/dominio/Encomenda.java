@@ -66,6 +66,11 @@ public class Encomenda {
         this.taxa = taxa;
     }
 
+    public Encomenda(String codRastreio, String desc) {
+        this.codigoDeRastreio = codRastreio;
+        this.descricao = desc;
+    }
+
     public String[] pilha() {
         return pilha;
     }

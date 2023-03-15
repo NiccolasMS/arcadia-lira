@@ -70,7 +70,6 @@
 		</dependency>
 
 		<!--Email-->
-
 		<dependency>
 
 			<groupId>com.sun.mail</groupId>

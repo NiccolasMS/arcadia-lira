@@ -5,7 +5,7 @@ import Lira.Arcadia.controle.repositorio.ControleRepository;
 import Lira.Arcadia.controle.repositorio.EncomendaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/controle")
 public class ControleController {

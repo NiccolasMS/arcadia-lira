@@ -5,10 +5,11 @@ import Lira.Arcadia.controle.dominio.Usuario;
 import Lira.Arcadia.controle.repositorio.PorteiroRepository;
 //import Lira.Arcadia.controle.utils.EnvioEmail;
 import Lira.Arcadia.controle.utils.EnvioEmail;
+import Lira.Arcadia.controle.utils.EnvioEmailIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/porteiros")
 public class PorteiroController {
@@ -30,11 +31,20 @@ public class PorteiroController {
         return ResponseEntity.status(401).build();
     }
 
-    @GetMapping("/enviarEmail/{destinatario}")
+    @PostMapping("/enviarEmail/{destinatario}")
     public ResponseEntity enviarEmail(@PathVariable String destinatario)
     {
         EnvioEmail email = new EnvioEmail();
         email.EnviarEmail(destinatario);
+
+        return ResponseEntity.status(200).body("Email enviado");
+    }
+
+    @PostMapping("/enviarEmailIndex/{destinatario}")
+    public ResponseEntity enviarEmailIndex(@PathVariable String destinatario)
+    {
+        EnvioEmailIndex email = new EnvioEmailIndex();
+        email.EnviarEmailIndex(destinatario);
 
         return ResponseEntity.status(200).body("Email enviado");
     }

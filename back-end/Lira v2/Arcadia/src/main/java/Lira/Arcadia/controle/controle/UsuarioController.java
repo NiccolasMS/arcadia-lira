@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -193,11 +194,12 @@ public class UsuarioController {
                 return ResponseEntity.status(404).build();
     }
 
-    @GetMapping("/loginMorador")
-    public ResponseEntity<Object> login(@RequestBody Morador morador){
-        Morador usuario = moradorRepository.findByEmail(morador.getEmail());
+    @PostMapping("/loginMorador/{email}/{senha}")
+    public ResponseEntity<Object> loginMorador(@PathVariable String email, @PathVariable String senha){
+        Morador usuario = moradorRepository.findByEmail(email);
+
         if (usuario != null) {
-            if (usuario.senha().equals(morador.senha())) {
+            if (usuario.senha().equals(senha)) {
                 usuario.setAutenticado(true);
                 moradorRepository.save(usuario);
                 return ResponseEntity.status(200).body("Login realizado com sucesso!");
@@ -207,11 +209,27 @@ public class UsuarioController {
         }
         return ResponseEntity.status(404).body("Usuário não encontrado");
     }
-    @GetMapping("/loginPorteiro")
-    public ResponseEntity<Object> login(@RequestBody Porteiro porteiro) {
-        Porteiro usuario = porteiroRepository.findByEmail(porteiro.getEmail());
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginUsuario(@RequestBody Morador morador){
+        Morador usuario = moradorRepository.findByEmail(morador.getEmail());
         if (usuario != null) {
-            if (usuario.senha().equals(porteiro.senha())) {
+            if (usuario.senha().equals(morador.senha())) {
+                usuario.setAutenticado(true);
+                moradorRepository.save(usuario);
+                return ResponseEntity.status(200).body("Login realizado com sucesso!");
+            }else {
+                return ResponseEntity.status(401).body("Usuário e/ou senha incorretos!");
+            }
+        }
+        return ResponseEntity.status(404).body("Usuário não encontrado");
+    }
+
+    @PostMapping("/loginPorteiro/{email}/{senha}")
+    public ResponseEntity<Object> loginPorteiro(@PathVariable String email, @PathVariable String senha) {
+        Porteiro usuario = porteiroRepository.findByEmail(email);
+        if (usuario != null) {
+            if (usuario.senha().equals(senha)) {
                 usuario.setAutenticado(true);
                 porteiroRepository.save(usuario);
                 return ResponseEntity.status(200).body("Login realizado com sucesso!");
