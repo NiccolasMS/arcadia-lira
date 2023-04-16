@@ -48,7 +48,7 @@ function Body() {
           <Box component="img" src={imagem} sx={styles.imagem} />
           <Grid sx={styles.centralizar}>
             <Typography sx={styles.typography} variant="h5">
-              Inovação para descomplicar sua gestão
+              WEB-SERVICE1
             </Typography>
           </Grid>
           <Grid>
