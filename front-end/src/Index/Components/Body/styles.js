@@ -66,7 +66,7 @@ const useStyles = () => ({
     marginLeft: "79.5%",
     marginRight: "33%",
     marginTop: "29%",
-    background: "#39BFBF",
+    background: "#bf4f39",
     borderRadius: "30px",
   },
   typography: {
