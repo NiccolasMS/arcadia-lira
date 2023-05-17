@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaEditarEncomenda">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/laranja_header" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Editar Encomenda"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/tv_codigo_rastreio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="Código de Rastreio"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/input_codigo_rastreio"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_codigo_rastreio"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_adicionar"
+            android:hint="Ex: 7458345643BR"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_descricao_compra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_codigo_rastreio"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:text="Descrição da compra"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/input_descricao_compra"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_below="@id/tv_descricao_compra"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_adicionar"
+            android:hint="Ex: Ursinho de pelúcia"
+            android:paddingLeft="10dp"
+            android:paddingBottom="215dp" />
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_descricao_compra"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/vermelho_arcadia"
+            android:text="Excluir"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_descricao_compra"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="40dp"
+            android:backgroundTint="@color/verde_arcadia"
+            android:text="Editar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

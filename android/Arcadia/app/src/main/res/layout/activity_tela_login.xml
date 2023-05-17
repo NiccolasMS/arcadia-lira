@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".TelaLogin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/logo_horizontal"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/logohorizontal" />
+
+        <ImageView
+            android:id="@+id/imagem_digital"
+            android:layout_width="210dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@id/logo_horizontal"
+            android:src="@mipmap/imagemlogin" />
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/imagem_digital"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_border_login"
+            android:hint="@string/input_email_login"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/input_senha"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_email"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext_border_login"
+            android:hint="@string/input_senha_login"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <Button
+            android:onClick="entrar"
+            android:id="@+id/btn_cadastro"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_senha"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/verde_arcadia"
+            android:text="@string/btn_login"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/linha_cadastro"
+            android:layout_width="340dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/btn_cadastro"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@mipmap/linhalogin" />
+
+        <Button
+            android:id="@+id/btn_cadastro_google"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/linha_cadastro"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/verde_arcadia"
+            android:text="@string/btn_login_google"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_esqueceu_senha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_cadastro_google"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/btn_esqueceu_senha"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_esqueceu_senha"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="telaCadastro"
+            android:text="@string/btn_cadastro_tela_login"
+            android:textColor="@color/verde_arcadia"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

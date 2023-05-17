@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Arcádia</string>
+    <string name="input_usuario">Usuário</string>
+    <string name="input_email_cadastro">Email</string>
+    <string name="input_email_login">Email</string>
+    <string name="input_senha_cadastro">Senha</string>
+    <string name="input_senha_login">Senha</string>
+    <string name="btn_cadastro">CADASTRO</string>
+    <string name="btn_cadastro_google">Cadastrar com Google</string>
+    <string name="btn_login_tela_cadastro">LOGIN</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_login_google">Entrar com Google</string>
+    <string name="btn_esqueceu_senha">Esqueceu sua senha?</string>
+    <string name="btn_cadastro_tela_login">CADASTRO</string>
+    <string name="btn_salvar">SALVAR</string>
+    <string name="txt_editar_perfil">Editar Perfil</string>
+    <string name="txt_nome_de_usuario">Nome de Usuário</string>
+    <string name="input_nome_de_usuario_condomino">Fulano de Tal</string>
+    <string name="txt_email_condomino">Email</string>
+    <string name="input_email_condomino">fulano.tal@gmail.com</string>
+    <string name="txt_genero">Gênero</string>
+    <string name="input_genero">Masculino</string>
+    <string name="txt_data_de_nascimento_condomino">Data de Nascimento</string>
+    <string name="input_data_de_nascimento_condomino">11/11/1111</string>
+    <string name="txt_alterar_senha">Alterar Senha</string>
+    <string name="txt_senha_atual">Senha Atual</string>
+    <string name="input_senha">*********</string>
+    <string name="txt_nova_senha">Nova Senha</string>
+    <string name="txt_confirmar_a_senha">Confirmar a Senha</string>
+    <string name="input_email_portaria">alpha.condominios@gmail.com</string>
+    <string name="input_nome_de_usuario_portaria">Condomínio Aplha</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

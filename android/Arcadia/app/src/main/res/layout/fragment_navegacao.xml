@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="NavegacaoFragment">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/white"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_home"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        />
+    <ImageView
+        android:id="@+id/iv_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_chat"
+        android:layout_toEndOf="@id/iv_home"
+        android:layout_marginStart="55dp"/>
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_add"
+        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:id="@+id/iv_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_list"
+        android:layout_toStartOf="@id/iv_config"
+        android:layout_marginEnd="55dp"/>
+    <ImageView
+        android:id="@+id/iv_config"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_config"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"/>
+
+
+</RelativeLayout>
+</FrameLayout>
