@@ -5,11 +5,134 @@
     android:layout_height="match_parent"
     tools:context=".ConfigFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Tela Config"
-        android:textSize="50sp"/>
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/campo_foto"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/verde_arcadia" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="70dp"
+            android:text="Configurações"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:src="@mipmap/photo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="130dp"
+            android:layout_toRightOf="@id/foto"
+            android:text="Olá"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="160dp"
+            android:layout_toRightOf="@id/foto"
+            android:text="Condomínio Alpha"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/linha_cinza"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/campo_foto"
+            android:background="@color/grey_line" />
+
+        <Button
+            android:id="@+id/btn_editar_perfil"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/linha_cinza"
+            android:background="@drawable/btn_transparente"
+            android:text="Editar Perfil"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/seta_btn1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="270dp"
+            android:layout_toRightOf="@id/btn_editar_perfil"
+            android:src="@mipmap/seta_botao" />
+
+        <View
+            android:id="@+id/linha_cinza2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btn_editar_perfil"
+            android:background="@color/grey_line" />
+
+        <Button
+            android:id="@+id/btn_suporte"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/linha_cinza2"
+            android:background="@drawable/btn_transparente"
+            android:text="Suporte"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/seta_btn2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="341dp"
+            android:layout_toRightOf="@id/btn_editar_perfil"
+            android:src="@mipmap/seta_botao" />
+
+        <View
+            android:id="@+id/linha_cinza3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btn_suporte"
+            android:background="@color/grey_line" />
+
+        <Button
+            android:id="@+id/btn_deslogar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/linha_cinza3"
+            android:background="@drawable/btn_transparente"
+            android:text="Deslogar"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/vermelho_arcadia"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/linha_cinza4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/btn_deslogar"
+            android:background="@color/grey_line" />
+
+    </RelativeLayout>
 
 </FrameLayout>

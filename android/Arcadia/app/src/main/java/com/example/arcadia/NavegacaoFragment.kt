@@ -32,25 +32,25 @@ class NavegacaoFragment : Fragment() {
 
         binding.ivHome.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela, HomeFragment(), "FRAGMENT_HOME")
+            transaction!!.replace(R.id.fragment_tela_principal, HomeFragment(), "FRAGMENT_HOME")
             transaction.commit()
         }
 
-        binding.ivHome.setOnClickListener {
+        binding.ivChat.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela, ChatFragment(), "FRAGMENT_CHAT")
+            transaction!!.replace(R.id.fragment_tela_principal, ChatFragment(), "FRAGMENT_CHAT")
             transaction.commit()
         }
 
-        binding.ivHome.setOnClickListener {
+        binding.ivList.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela, ListFragment(), "FRAGMENT_LIST")
+            transaction!!.replace(R.id.fragment_tela_principal, ListFragment(), "FRAGMENT_LIST")
             transaction.commit()
         }
 
-        binding.ivHome.setOnClickListener {
+        binding.ivConfig.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela, ConfigFragment(), "FRAGMENT_CONFIG")
+            transaction!!.replace(R.id.fragment_tela_principal, ConfigFragment(), "FRAGMENT_CONFIG")
             transaction.commit()
         }
 

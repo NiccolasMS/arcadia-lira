@@ -26,18 +26,6 @@
             android:name=".TelaAdicionarEncomenda"
             android:exported="false" />
         <activity
-            android:name=".ConfigFragment"
-            android:exported="false" />
-        <activity
-            android:name=".ListFragment"
-            android:exported="false" />
-        <activity
-            android:name=".ChatFragment"
-            android:exported="false" />
-        <activity
-            android:name=".HomeFragment"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -53,7 +41,7 @@
             android:name=".TelaCadastro"
             android:exported="false" />
         <activity
-            android:name=".TelaConfiguracaoPortariaInicial"
+            android:name=".TelaPrincipal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
