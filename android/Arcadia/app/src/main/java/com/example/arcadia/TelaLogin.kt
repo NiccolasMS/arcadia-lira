@@ -39,8 +39,8 @@ class TelaLogin : AppCompatActivity() {
         // iniciando uma chamada ASSÍNCRONA na API
 
         if (email == "condominio.alpha@hotmail.com" && senha == "alpha123") {
-            val telaConfiguracaoPortaria =
-                Intent(applicationContext, TelaConfiguracaoPortaria::class.java)
+            val telaPrincipal =
+                Intent(applicationContext, TelaPrincipal::class.java)
 
             chamadaLoginPorteiro.enqueue(object : Callback<List<Porteiro>> {
                 override fun onResponse(
@@ -52,7 +52,7 @@ class TelaLogin : AppCompatActivity() {
                             Toast.makeText(
                                 baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                             ).show()
-                            startActivity(telaConfiguracaoPortaria)
+                            startActivity(telaPrincipal)
                         } else {
                             Toast.makeText(
                                 baseContext, "Login e/ou senha inválidos!", Toast.LENGTH_LONG
@@ -62,7 +62,7 @@ class TelaLogin : AppCompatActivity() {
                         Toast.makeText(
                             baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                         ).show()
-                        startActivity(telaConfiguracaoPortaria)
+                        startActivity(telaPrincipal)
                     }
                 }
 
@@ -76,8 +76,8 @@ class TelaLogin : AppCompatActivity() {
         }
 
         if (email != "condominio.alpha@hotmail.com" && senha != "alpha123") {
-            val telaConfiguracaoCondomino =
-                Intent(applicationContext, TelaConfiguracaoCondomino::class.java)
+            val telaPrincipal =
+                Intent(applicationContext, TelaPrincipal::class.java)
 
             chamadaLoginMorador.enqueue(object : Callback<List<Morador>> {
                 override fun onResponse(
@@ -89,7 +89,7 @@ class TelaLogin : AppCompatActivity() {
                             Toast.makeText(
                                 baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                             ).show()
-                            startActivity(telaConfiguracaoCondomino)
+                            startActivity(telaPrincipal)
                         } else {
                             Toast.makeText(
                                 baseContext, "Login e/ou senha inválidos!", Toast.LENGTH_LONG
@@ -99,7 +99,7 @@ class TelaLogin : AppCompatActivity() {
                         Toast.makeText(
                             baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                         ).show()
-                        startActivity(telaConfiguracaoCondomino)
+                        startActivity(telaPrincipal)
                     }
                 }
 

@@ -76,8 +76,9 @@
             android:id="@+id/seta_btn1"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="270dp"
-            android:layout_toRightOf="@id/btn_editar_perfil"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="350dp"
+            android:layout_below="@id/linha_cinza"
             android:src="@mipmap/seta_botao" />
 
         <View
@@ -89,7 +90,7 @@
 
         <Button
             android:id="@+id/btn_suporte"
-            android:layout_width="380dp"
+            android:layout_width="330dp"
             android:layout_height="70dp"
             android:layout_below="@id/linha_cinza2"
             android:background="@drawable/btn_transparente"
@@ -103,8 +104,9 @@
             android:id="@+id/seta_btn2"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="341dp"
-            android:layout_toRightOf="@id/btn_editar_perfil"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="350dp"
+            android:layout_below="@id/linha_cinza2"
             android:src="@mipmap/seta_botao" />
 
         <View

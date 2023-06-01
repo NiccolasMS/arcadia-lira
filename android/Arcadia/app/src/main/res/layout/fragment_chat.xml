@@ -5,11 +5,40 @@
     android:layout_height="match_parent"
     tools:context=".ChatFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Tela Chat"
-        android:textSize="50sp"/>
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/laranja_header" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="NOTIFICAÇÕES"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_below="@id/header"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="334dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/card_notificacoes" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>
