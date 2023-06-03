@@ -2,7 +2,7 @@ import * as React from "react";
 
 const useStyles = () => ({
   fundo: {
-    backgroundColor: "rgba(57, 191, 191, 0.3)",
+    backgroundColor: "rgb(245, 72, 137)",
   },
 });
 
