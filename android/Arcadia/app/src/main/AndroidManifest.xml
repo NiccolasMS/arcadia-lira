@@ -17,13 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TelaAdicionarEncomenda"
+            android:exported="false" />
+        <activity
             android:name=".TelaAdicionarNoticia"
             android:exported="false" />
         <activity
             android:name=".TelaEditarEncomenda"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAdicionarEncomenda"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
