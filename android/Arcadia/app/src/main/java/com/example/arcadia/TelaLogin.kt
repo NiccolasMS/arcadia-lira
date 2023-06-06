@@ -41,7 +41,7 @@ class TelaLogin : AppCompatActivity() {
 
         if (email == "condominio.alpha@hotmail.com" && senha == "alpha123") {
             val telaPrincipal =
-                Intent(applicationContext, TelaPrincipal::class.java)
+                Intent(applicationContext, TelaConfiguracaoPortaria::class.java)
 
             chamadaLoginPorteiro.enqueue(object : Callback<List<Porteiro>> {
                 override fun onResponse(

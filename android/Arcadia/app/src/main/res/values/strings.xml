@@ -13,7 +13,7 @@
     <string name="btn_esqueceu_senha">Esqueceu sua senha?</string>
     <string name="btn_cadastro_tela_login">CADASTRO</string>
     <string name="btn_salvar">SALVAR</string>
-    <string name="txt_editar_perfil">Editar Perfil</string>
+    <string name="txt_editar_perfil">Perfil do usuário</string>
     <string name="txt_nome_de_usuario">Nome de Usuário</string>
     <string name="input_nome_de_usuario_condomino">Fulano de Tal</string>
     <string name="txt_email_condomino">Email</string>

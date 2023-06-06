@@ -13,7 +13,7 @@
         <View
             android:id="@+id/campo_foto"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="90dp"
             android:background="@color/verde_arcadia" />
 
         <ImageView
@@ -38,13 +38,6 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-        <ImageView
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:src="@mipmap/foto_perfil" />
-
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/campo_foto"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="@string/txt_editar_perfil"
                     android:textColor="@color/black"
                     android:textSize="30sp" />

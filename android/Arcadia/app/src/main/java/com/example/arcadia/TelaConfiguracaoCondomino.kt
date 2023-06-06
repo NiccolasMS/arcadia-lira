@@ -12,14 +12,10 @@ class TelaConfiguracaoCondomino : AppCompatActivity() {
     }
 
     fun voltarCondomino(component: View) {
-        val telaLogin =
-            Intent(applicationContext, TelaLogin::class.java)
-        startActivity(telaLogin)
+        finish()
     }
 
     fun salvarCondomino(component: View) {
-        val telaLogin =
-            Intent(applicationContext, TelaLogin::class.java)
-        startActivity(telaLogin)
+        finish()
     }
 }

@@ -63,6 +63,7 @@
         <Button
             android:id="@+id/btn_editar_perfil"
             android:layout_width="380dp"
+            android:onClick="telaConfigMorador"
             android:layout_height="70dp"
             android:layout_below="@id/linha_cinza"
             android:background="@drawable/btn_transparente"
@@ -86,26 +87,6 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@id/btn_editar_perfil"
-            android:background="@color/grey_line" />
-
-
-        <Button
-            android:id="@+id/btn_deslogar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@id/linha_cinza2"
-            android:background="@drawable/btn_transparente"
-            android:text="Deslogar"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="@color/vermelho_arcadia"
-            android:textSize="20sp" />
-
-        <View
-            android:id="@+id/linha_cinza4"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/btn_deslogar"
             android:background="@color/grey_line" />
 
     </RelativeLayout>

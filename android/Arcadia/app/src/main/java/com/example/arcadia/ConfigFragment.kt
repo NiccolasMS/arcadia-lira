@@ -36,12 +36,12 @@ class ConfigFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnDeslogar.setOnClickListener {
-            deslogar()
+        binding.btnEditarPerfil.setOnClickListener {
+            telaConfigMorador()
         }
     }
 
-    private fun deslogar() {
+    fun deslogar() {
 
         val telaCadastro =
             Intent(requireActivity().applicationContext, TelaCadastro::class.java)
@@ -66,5 +66,11 @@ class ConfigFragment : Fragment() {
                 Log.d("TelaConfig", "onFailure: " + t.message)
             }
         })
+    }
+
+    fun telaConfigMorador() {
+        val telaMorador =
+            Intent(requireContext().applicationContext, TelaConfiguracaoCondomino::class.java)
+        startActivity(telaMorador)
     }
 }

@@ -25,29 +25,20 @@
             android:textColor="@color/white"
             android:textSize="28sp" />
 
-        <TextView
-            android:id="@+id/tv_codigo_rastreio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="20dp"
+            android:layout_marginBottom="60dp"
             android:layout_below="@id/header"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="5dp"
-            android:text="txt"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:layout_marginTop="-2dp">
 
-        <EditText
-            android:id="@+id/input_codigo_rastreio"
-            android:layout_width="334dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_codigo_rastreio"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/card_feed"
-            android:hint="txt"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_noticias"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/row_notificacao_items" />
+        </ScrollView>
 
     </RelativeLayout>
 

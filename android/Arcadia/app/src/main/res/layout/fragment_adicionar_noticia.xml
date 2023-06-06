@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentAdicionarNoticia">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/laranja_header" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Adicionar Notícias"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/tv_titulo_noticia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Título da Notícia"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/input_titulo_noticia"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_titulo_noticia"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_adicionar"
+            android:hint="Churrasqueira indisponível"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_descricao_noticia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_titulo_noticia"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:text="Descrição"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/input_descricao_noticia"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_below="@id/tv_descricao_noticia"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_adicionar"
+            android:hint="Ex: A churrasqueira estará indisponível..."
+            android:paddingLeft="10dp"
+            android:paddingBottom="215dp" />
+
+        <Button
+            android:id="@+id/btn_adicionar_noticia"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_descricao_noticia"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Adicionar"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:backgroundTint="@color/verde_arcadia"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

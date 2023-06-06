@@ -34,20 +34,19 @@
         android:src="@drawable/icon_add"
         android:layout_centerHorizontal="true"/>
     <ImageView
-        android:id="@+id/iv_list"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@drawable/icon_chat"
-        android:layout_toStartOf="@id/iv_config"
-        android:layout_marginEnd="55dp"/>
-    <ImageView
         android:id="@+id/iv_config"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/icon_config"
+        android:layout_toStartOf="@id/iv_exit"
+        android:layout_marginEnd="55dp"/>
+    <ImageView
+        android:id="@+id/iv_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_exit"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"/>
-
 
 </RelativeLayout>
 </FrameLayout>

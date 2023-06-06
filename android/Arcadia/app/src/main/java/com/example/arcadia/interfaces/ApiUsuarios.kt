@@ -1,10 +1,9 @@
 package com.example.arcadia.interfaces
 
-import android.widget.EditText
 import com.example.arcadia.models.Encomenda
 import com.example.arcadia.models.Morador
+import com.example.arcadia.models.Noticia
 import com.example.arcadia.models.Porteiro
-import com.example.arcadia.models.Usuario
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -35,5 +34,14 @@ interface ApiUsuarios {
 
     @PUT("usuarios/logoffMorador/{email}")
     fun putLogoff(@Path("email") email: String?) : Call<Void>
+
+    @POST("/encomendas/cadastrarEncomenda/{codRastreio}/{desc}")
+    fun postCadastrarEncomenda(@Path("codRastreio") codRastreio: String, @Path("desc") desc: String) : Call<Encomenda>
+
+    @POST("noticias/{titulo}/{descricao}")
+    fun postAdicionarNoticia(@Path("titulo") titulo: String, @Path("descricao") descricao: String) : Call<Noticia>
+
+    @GET("noticias")
+    fun getNoticias() : Call<List<Noticia>>
 
 }

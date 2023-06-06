@@ -43,6 +43,7 @@ class FragmentEditarEncomenda(
 
         binding.btnExcluir.setOnClickListener {
             excluir()
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
 
@@ -66,7 +67,7 @@ class FragmentEditarEncomenda(
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d("TelaPrincipal", "onFailure: " + t.message)
+                Log.d("ExcluirEncomenda", "onFailure: " + t.message)
             }
         })
     }
