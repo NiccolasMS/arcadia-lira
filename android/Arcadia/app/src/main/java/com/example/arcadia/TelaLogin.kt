@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import com.example.arcadia.api.Apis
 import com.example.arcadia.models.Morador
@@ -26,8 +27,8 @@ class TelaLogin : AppCompatActivity() {
 
     fun entrar(componente: View) {
         // recuperando os dados enviados pela Activity anterior
-        val email = intent.getStringExtra("email")
-        val senha = intent.getStringExtra("senha")
+        val email = findViewById<EditText>(R.id.input_email).text.toString()
+        val senha = findViewById<EditText>(R.id.input_senha).text.toString()
 
         // instância do cliente da API
         val apiUsuarios = Apis.getApiUsuarios()
@@ -89,6 +90,7 @@ class TelaLogin : AppCompatActivity() {
                             Toast.makeText(
                                 baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                             ).show()
+                            SessaoUsuario.email = email
                             startActivity(telaPrincipal)
                         } else {
                             Toast.makeText(
@@ -99,6 +101,7 @@ class TelaLogin : AppCompatActivity() {
                         Toast.makeText(
                             baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
                         ).show()
+                        SessaoUsuario.email = email
                         startActivity(telaPrincipal)
                     }
                 }

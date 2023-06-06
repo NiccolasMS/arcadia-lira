@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:text="Editar Encomenda"
+            android:text="Informações Encomenda"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="28sp" />
@@ -71,26 +71,14 @@
             android:paddingBottom="215dp" />
 
         <Button
-            android:layout_width="140dp"
+            android:id="@+id/btn_excluir"
+            android:layout_width="220dp"
+            android:layout_centerHorizontal="true"
             android:layout_height="50dp"
             android:layout_below="@id/input_descricao_compra"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/vermelho_arcadia"
-            android:text="Excluir"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <Button
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/input_descricao_compra"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="@color/verde_arcadia"
-            android:text="Editar"
+            android:text="Excluir Encomenda"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp" />

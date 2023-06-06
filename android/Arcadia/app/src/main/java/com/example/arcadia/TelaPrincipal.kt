@@ -17,12 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class TelaPrincipal : AppCompatActivity() {
 
-    lateinit var myAdapter: MyAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_principal)
-        setContentView(R.layout.fragment_chat)
 
 //        recyclerview_notificacoes.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
@@ -32,31 +31,5 @@ class TelaPrincipal : AppCompatActivity() {
         //transaction.replace(R.id.fragment_menu_principal, NavegacaoFragment(), "FRAGMENT_HOME")
         //transaction.commit()
 
-    }
-
-    private fun getEncomendas() {
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Apis.BASE_URL)
-            .build()
-            .create(ApiUsuarios::class.java)
-
-        val retrofitData = retrofitBuilder.getEncomendas()
-
-        retrofitData.enqueue(object : Callback<List<Encomenda>?> {
-            override fun onResponse(
-                call: Call<List<Encomenda>?>,
-                response: Response<List<Encomenda>?>
-            ) {
-                val responseBody = response.body()!!
-
-                myAdapter = MyAdapter(baseContext, responseBody)
-                myAdapter.notifyDataSetChanged()
-            }
-
-            override fun onFailure(call: Call<List<Encomenda>?>, t: Throwable) {
-                d("TelaPrincipal", "onFailure: " + t.message)
-            }
-        })
     }
 }

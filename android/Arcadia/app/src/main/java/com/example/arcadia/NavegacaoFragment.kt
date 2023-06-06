@@ -2,17 +2,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.arcadia.ChatFragment
+import com.example.arcadia.EncomendaFragment
 import com.example.arcadia.ConfigFragment
 import com.example.arcadia.HomeFragment
-import com.example.arcadia.ListFragment
+import com.example.arcadia.NotificationFragment
 import com.example.arcadia.R
 import com.example.arcadia.databinding.FragmentNavegacaoBinding
+import com.example.arcadia.models.Usuario
 
 class NavegacaoFragment : Fragment() {
 
@@ -38,13 +35,13 @@ class NavegacaoFragment : Fragment() {
 
         binding.ivChat.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela_principal, ChatFragment(), "FRAGMENT_CHAT")
+            transaction!!.replace(R.id.fragment_tela_principal, EncomendaFragment(), "FRAGMENT_CHAT")
             transaction.commit()
         }
 
         binding.ivList.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela_principal, ListFragment(), "FRAGMENT_LIST")
+            transaction!!.replace(R.id.fragment_tela_principal, NotificationFragment(), "FRAGMENT_LIST")
             transaction.commit()
         }
 

@@ -1,59 +1,73 @@
 package com.example.arcadia
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import com.example.arcadia.api.Apis
+import com.example.arcadia.databinding.FragmentEditarEncomendaBinding
+import com.example.arcadia.interfaces.ApiUsuarios
+import com.example.arcadia.models.Encomenda
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class FragmentEditarEncomenda(
+    val encomenda: Encomenda
+) : Fragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentEditarEncomenda.newInstance] factory method to
- * create an instance of this fragment.
- */
-class FragmentEditarEncomenda : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentEditarEncomendaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar_encomenda, container, false)
+    ): View {
+
+        binding = FragmentEditarEncomendaBinding.inflate(inflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEditarEncomenda.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentEditarEncomenda().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.inputCodigoRastreio.setText(encomenda.codigoDeRastreio)
+        binding.inputDescricaoCompra.setText(encomenda.descricao)
+
+
+        binding.btnExcluir.setOnClickListener {
+            excluir()
+        }
+    }
+
+    private fun excluir() {
+
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(Apis.BASE_URL)
+            .build()
+            .create(ApiUsuarios::class.java)
+
+
+        val retrofitData = retrofitBuilder.deleteEncomenda(encomenda.id)
+
+
+        retrofitData.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful){
+                    Toast.makeText(view?.context, "DELETADO COM SUCESSO", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.d("TelaPrincipal", "onFailure: " + t.message)
+            }
+        })
     }
 }

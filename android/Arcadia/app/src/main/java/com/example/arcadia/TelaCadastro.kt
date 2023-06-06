@@ -74,9 +74,6 @@ class TelaCadastro : AppCompatActivity() {
 
         val apiUsuarios = Apis.getApiUsuarios()
 
-
-
-
         if (email == "condominio.alpha@hotmail.com" && senha == "Alpha@123") {
             val telaLogin =
                 Intent(applicationContext, TelaLogin::class.java)

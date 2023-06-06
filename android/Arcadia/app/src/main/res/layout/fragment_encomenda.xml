@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ChatFragment">
+    tools:context=".EncomendaFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,20 +21,28 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:text="NOTIFICAÇÕES"
+            android:text="ENCOMENDAS"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_notificacoes"
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="20dp"
+            android:layout_marginBottom="60dp"
+            android:layout_below="@id/header"
+            android:layout_marginTop="-2dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_notificacoes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/row_encomenda_items" />
+        </ScrollView>
+
 
     </RelativeLayout>
+
 
 </FrameLayout>

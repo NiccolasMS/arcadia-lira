@@ -19,11 +19,6 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@mipmap/eclipse" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -35,7 +30,7 @@
                     android:id="@+id/codigoDeRastreio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Codigo"
+                    android:text="Título"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -44,7 +39,7 @@
                     android:id="@+id/descricao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Desc"
+                    android:text="Notícia"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="normal" />
