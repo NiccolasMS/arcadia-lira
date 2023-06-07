@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.arcadia.activity.TelaConfiguracaoCondomino
+import com.example.arcadia.activity.TelaConfiguracaoPortaria
 import com.example.arcadia.databinding.FragmentConfigBinding
 
 class ConfigFragment : Fragment() {
@@ -33,5 +34,11 @@ class ConfigFragment : Fragment() {
         val telaMorador =
             Intent(requireContext().applicationContext, TelaConfiguracaoCondomino::class.java)
         startActivity(telaMorador)
+    }
+
+    fun telaConfigPortaria() {
+        val telaPortaria =
+            Intent(requireContext().applicationContext, TelaConfiguracaoPortaria::class.java)
+        startActivity(telaPortaria)
     }
 }
