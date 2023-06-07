@@ -15,7 +15,4 @@ class TelaConfiguracaoCondomino : AppCompatActivity() {
         finish()
     }
 
-    fun salvarCondomino(component: View) {
-        finish()
-    }
 }

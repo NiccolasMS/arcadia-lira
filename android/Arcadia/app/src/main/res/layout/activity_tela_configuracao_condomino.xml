@@ -90,9 +90,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     android:paddingBottom="30dp"
-                    android:text="maria@hotmail.com" />
-
-
+                    android:text="mariacondomino@hotmail.com" />
 
             </LinearLayout>
 

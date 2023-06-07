@@ -13,14 +13,6 @@ class TelaConfiguracaoPortaria : AppCompatActivity() {
     }
 
     fun voltarPortaria(component: View) {
-        val telaLogin =
-            Intent(applicationContext, TelaLogin::class.java)
-        startActivity(telaLogin)
-    }
-
-    fun salvarPortaria(component: View) {
-        val telaLogin =
-            Intent(applicationContext, TelaLogin::class.java)
-        startActivity(telaLogin)
+        finish()
     }
 }

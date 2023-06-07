@@ -40,44 +40,6 @@ class TelaLogin : AppCompatActivity() {
 
         // iniciando uma chamada ASSÍNCRONA na API
 
-        if (email == "condominio.alpha@hotmail.com" && senha == "alpha123") {
-            val telaPrincipal =
-                Intent(applicationContext, TelaConfiguracaoPortaria::class.java)
-
-            chamadaLoginPorteiro.enqueue(object : Callback<List<Porteiro>> {
-                override fun onResponse(
-                    call: Call<List<Porteiro>>, response: Response<List<Porteiro>>
-                ) {
-                    if (response.isSuccessful) { // status 2xx (200, 201, 204 etc)
-                        val usuarios = response.body()
-                        if (usuarios?.isNotEmpty()!!) {
-                            Toast.makeText(
-                                baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
-                            ).show()
-                            startActivity(telaPrincipal)
-                        } else {
-                            Toast.makeText(
-                                baseContext, "Login e/ou senha inválidos!", Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    } else {
-                        Toast.makeText(
-                            baseContext, "Login efetuado com sucesso!", Toast.LENGTH_LONG
-                        ).show()
-                        startActivity(telaPrincipal)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Porteiro>>, t: Throwable) {
-                    Toast.makeText(
-                        baseContext, "Erro na API: ${t.message}", Toast.LENGTH_SHORT
-                    ).show()
-                    t.printStackTrace()
-                }
-            })
-        }
-
-        if (email != "condominio.alpha@hotmail.com" && senha != "alpha123") {
             val telaPrincipal =
                 Intent(applicationContext, TelaPrincipal::class.java)
 
@@ -115,5 +77,4 @@ class TelaLogin : AppCompatActivity() {
                 }
             })
         }
-    }
 }
