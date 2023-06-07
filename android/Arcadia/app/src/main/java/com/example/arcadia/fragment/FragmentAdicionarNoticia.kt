@@ -1,4 +1,4 @@
-package com.example.arcadia
+package com.example.arcadia.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import com.example.arcadia.R
 import com.example.arcadia.api.Apis
-import com.example.arcadia.databinding.FragmentAdicionarEncomendaBinding
 import com.example.arcadia.databinding.FragmentAdicionarNoticiaBinding
 import com.example.arcadia.interfaces.ApiUsuarios
-import com.example.arcadia.models.Encomenda
 import com.example.arcadia.models.Noticia
 import com.google.gson.GsonBuilder
 import retrofit2.Call

@@ -1,50 +1,52 @@
-package com.example.arcadia
+package com.example.arcadia.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import com.example.arcadia.api.Apis
-import com.example.arcadia.databinding.FragmentConfigBinding
 import com.example.arcadia.databinding.FragmentEditarEncomendaBinding
 import com.example.arcadia.interfaces.ApiUsuarios
 import com.example.arcadia.models.Encomenda
-import com.example.arcadia.models.Usuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ConfigFragment : Fragment() {
+class FragmentEditarEncomenda(
+    val encomenda: Encomenda
+) : Fragment() {
 
-    private lateinit var binding: FragmentConfigBinding
+    private lateinit var binding: FragmentEditarEncomendaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentConfigBinding.inflate(inflater)
+
+        binding = FragmentEditarEncomendaBinding.inflate(inflater)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnEditarPerfil.setOnClickListener {
-            telaConfigMorador()
+        binding.inputCodigoRastreio.setText(encomenda.codigoDeRastreio)
+        binding.inputDescricaoCompra.setText(encomenda.descricao)
+
+
+        binding.btnExcluir.setOnClickListener {
+            excluir()
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
 
-    fun deslogar() {
-
-        val telaCadastro =
-            Intent(requireActivity().applicationContext, TelaCadastro::class.java)
+    private fun excluir() {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -52,25 +54,20 @@ class ConfigFragment : Fragment() {
             .build()
             .create(ApiUsuarios::class.java)
 
-        val retrofitData = retrofitBuilder.putLogoff(SessaoUsuario.email)
+
+        val retrofitData = retrofitBuilder.deleteEncomenda(encomenda.id)
+
 
         retrofitData.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(view?.context, "LogOff efetuado", Toast.LENGTH_SHORT).show()
-                    startActivity(telaCadastro)
+                if (response.isSuccessful){
+                    Toast.makeText(view?.context, "DELETADO COM SUCESSO", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d("TelaConfig", "onFailure: " + t.message)
+                Log.d("ExcluirEncomenda", "onFailure: " + t.message)
             }
         })
-    }
-
-    fun telaConfigMorador() {
-        val telaMorador =
-            Intent(requireContext().applicationContext, TelaConfiguracaoCondomino::class.java)
-        startActivity(telaMorador)
     }
 }

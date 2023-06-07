@@ -1,9 +1,9 @@
-package com.example.arcadia
+package com.example.arcadia.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.arcadia.R
 
 class TelaConfiguracaoCondomino : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

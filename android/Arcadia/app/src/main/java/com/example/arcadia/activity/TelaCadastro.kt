@@ -1,4 +1,4 @@
-package com.example.arcadia
+package com.example.arcadia.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,10 @@ import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.arcadia.R
 import com.example.arcadia.api.Apis
 import com.example.arcadia.models.Morador
 import com.example.arcadia.models.Porteiro
-import com.example.arcadia.models.Usuario
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

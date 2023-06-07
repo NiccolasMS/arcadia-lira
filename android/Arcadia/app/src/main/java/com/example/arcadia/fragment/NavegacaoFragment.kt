@@ -1,20 +1,14 @@
+package com.example.arcadia.fragment
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.arcadia.EncomendaFragment
-import com.example.arcadia.ConfigFragment
-import com.example.arcadia.FragmentAdicionarEncomenda
-import com.example.arcadia.FragmentAdicionarNoticia
-import com.example.arcadia.HomeFragment
-import com.example.arcadia.NotificationFragment
 import com.example.arcadia.R
-import com.example.arcadia.TelaLogin
-import com.example.arcadia.TelaPrincipal
+import com.example.arcadia.activity.TelaLogin
 import com.example.arcadia.databinding.FragmentNavegacaoBinding
-import com.example.arcadia.models.Encomenda
 
 class NavegacaoFragment : Fragment() {
 
@@ -62,7 +56,7 @@ class NavegacaoFragment : Fragment() {
 
         binding.ivAdd.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction!!.replace(R.id.fragment_tela_principal, FragmentAdicionarNoticia(), "FRAGMENT_ADICIONAR_ENCOMENDA")
+            transaction!!.replace(R.id.fragment_tela_principal, FragmentAdicionarEncomenda(), "FRAGMENT_ADICIONAR_ENCOMENDA")
             transaction.commit()
         }
 

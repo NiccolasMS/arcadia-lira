@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConfigFragment">
+    tools:context=".fragment.ConfigFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,20 +25,11 @@
             android:textColor="@color/white"
             android:textSize="25sp" />
 
-        <ImageView
-            android:id="@+id/foto"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="120dp"
-            android:src="@mipmap/photo" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="130dp"
-            android:layout_toRightOf="@id/foto"
             android:text="Olá"
             android:textColor="@color/white"
             android:textSize="20sp" />
@@ -46,10 +37,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="160dp"
-            android:layout_toRightOf="@id/foto"
-            android:text="Condomínio Alpha"
+            android:text="Maria"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

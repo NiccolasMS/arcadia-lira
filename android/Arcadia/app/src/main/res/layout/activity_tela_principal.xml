@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaPrincipal">
+    tools:context=".activity.TelaPrincipal">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="NavegacaoFragment"
+            android:name="com.example.arcadia.fragment.NavegacaoFragment"
             android:id="@+id/fragment_menu_principal"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"/>
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="com.example.arcadia.HomeFragment"
+            android:name="com.example.arcadia.fragment.HomeFragment"
             android:id="@+id/fragment_tela_principal"
             android:layout_width="match_parent"
             android:layout_marginBottom="40dp"

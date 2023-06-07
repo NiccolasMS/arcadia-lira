@@ -1,4 +1,4 @@
-package com.example.arcadia
+package com.example.arcadia.fragment
 
 import android.os.Bundle
 import android.util.Log

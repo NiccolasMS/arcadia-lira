@@ -44,4 +44,7 @@ interface ApiUsuarios {
     @GET("noticias")
     fun getNoticias() : Call<List<Noticia>>
 
+    @DELETE("noticias/{id}")
+    fun deleteNoticias(@Path("id") id: Int) : Call<Void>
+
 }

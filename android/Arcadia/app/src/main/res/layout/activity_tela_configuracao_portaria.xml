@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaConfiguracaoPortaria">
+    tools:context=".activity.TelaConfiguracaoPortaria">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         <View
             android:id="@+id/campo_foto"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="90dp"
             android:background="@color/verde_arcadia" />
 
         <ImageView
@@ -37,13 +37,6 @@
             android:text="@string/btn_salvar"
             android:textColor="@color/white"
             android:textSize="15sp" />
-
-        <ImageView
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:src="@mipmap/foto_perfil" />
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -106,75 +99,7 @@
 
                 <!-- ALTERAR SENHA -->
 
-                <TextView
-                    android:id="@+id/txt_alterar_senha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/input_data_nasc"
-                    android:layout_marginTop="40dp"
-                    android:text="@string/txt_alterar_senha"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/txt_senha_atual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txt_alterar_senha"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/txt_senha_atual"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/input_senha_atual"
-                    android:layout_width="356dp"
-                    android:layout_height="60dp"
-                    android:layout_below="@id/txt_senha_atual"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="6dp"
-                    android:hint="@string/input_senha"
-                    android:inputType="textPassword"
-                    android:paddingBottom="30dp" />
-
-                <TextView
-                    android:id="@+id/txt_nova_senha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/input_senha_atual"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/txt_nova_senha"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/input_nova_senha"
-                    android:layout_width="356dp"
-                    android:layout_height="60dp"
-                    android:layout_below="@id/txt_nova_senha"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="6dp"
-                    android:hint="@string/input_senha"
-                    android:inputType="textPassword"
-                    android:paddingBottom="30dp" />
-
-                <TextView
-                    android:id="@+id/txt_confirmar_senha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/input_nova_senha"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/txt_confirmar_a_senha"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:id="@+id/input_confirmar_senha"
-                    android:layout_width="356dp"
-                    android:layout_height="60dp"
-                    android:layout_below="@id/txt_confirmar_senha"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="6dp"
-                    android:hint="@string/input_senha"
-                    android:inputType="textPassword"
-                    android:paddingBottom="30dp" />
 
             </LinearLayout>
 
