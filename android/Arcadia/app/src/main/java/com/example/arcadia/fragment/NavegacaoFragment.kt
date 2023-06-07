@@ -45,18 +45,18 @@ class NavegacaoFragment : Fragment() {
         }
 
 //        Tela Configuração Morador
-//        binding.ivConfig.setOnClickListener {
-//            val telaMorador =
-//                Intent(requireContext().applicationContext, TelaConfiguracaoCondomino::class.java)
-//            startActivity(telaMorador)
-//        }
+        binding.ivConfig.setOnClickListener {
+            val telaMorador =
+                Intent(requireContext().applicationContext, TelaConfiguracaoCondomino::class.java)
+            startActivity(telaMorador)
+        }
 
 //        Tela Configuração Porteiro
-        binding.ivConfig.setOnClickListener {
-            val telaPorteiro =
-                Intent(requireContext().applicationContext, TelaConfiguracaoPortaria::class.java)
-            startActivity(telaPorteiro)
-          }
+//        binding.ivConfig.setOnClickListener {
+//            val telaPorteiro =
+//                Intent(requireContext().applicationContext, TelaConfiguracaoPortaria::class.java)
+//            startActivity(telaPorteiro)
+//          }
 
         binding.ivExit.setOnClickListener {
             val telaLogin =
@@ -66,26 +66,26 @@ class NavegacaoFragment : Fragment() {
 
 
 //      Morador
-//        binding.ivAdd.setOnClickListener {
-//            val transaction = activity?.supportFragmentManager?.beginTransaction()
-//            transaction!!.replace(
-//                R.id.fragment_tela_principal,
-//                FragmentAdicionarEncomenda(),
-//                "FRAGMENT_ADICIONAR_ENCOMENDA"
-//            )
-//            transaction.commit()
-//        }
-
-//      Porteiro
         binding.ivAdd.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction!!.replace(
                 R.id.fragment_tela_principal,
-                FragmentAdicionarNoticia(),
+                FragmentAdicionarEncomenda(),
                 "FRAGMENT_ADICIONAR_ENCOMENDA"
             )
             transaction.commit()
         }
+
+//      Porteiro
+//        binding.ivAdd.setOnClickListener {
+//            val transaction = activity?.supportFragmentManager?.beginTransaction()
+//            transaction!!.replace(
+//                R.id.fragment_tela_principal,
+//                FragmentAdicionarNoticia(),
+//                "FRAGMENT_ADICIONAR_ENCOMENDA"
+//            )
+//            transaction.commit()
+//        }
 
     }
 
